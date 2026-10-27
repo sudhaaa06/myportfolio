@@ -13,15 +13,10 @@ export const Navbar = () => {
 
     const navLinks = [
         { name: "About", href: "#about" },
-<<<<<<< HEAD
         { name: "Experience", href: "#experience" },
         { name: "Skills", href: "#skills" },
         { name: "Projects", href: "#projects" },
         { name: "Certificates", href: "#certificates" },
-=======
-        { name: "Skills", href: "#skills" },
-        { name: "Project", href: "#featured" },
->>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
         { name: "Contact", href: "#contact" },
     ];
 
@@ -31,14 +26,8 @@ export const Navbar = () => {
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<<<<<<< HEAD
                 {/* Brand name removed */}
                 <div />
-=======
-                <a href="#" className="text-2xl font-bold font-serif tracking-tighter text-white">
-                    SUDHAGAR <span className="text-gold">M.</span>
-                </a>
->>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex space-x-8 items-center">

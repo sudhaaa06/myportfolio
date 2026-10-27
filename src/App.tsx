@@ -2,16 +2,10 @@ import { useState, useEffect } from "react";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
-<<<<<<< HEAD
 import { Experience } from "./components/sections/Experience";
 import { Skills } from "./components/sections/Skills";
 import { OtherProjects } from "./components/sections/OtherProjects";
 import { Certifications } from "./components/sections/Certifications";
-=======
-import { Skills } from "./components/sections/Skills";
-import { FeaturedProject } from "./components/sections/FeaturedProject";
-import { OtherProjects } from "./components/sections/OtherProjects";
->>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
 import { Resume } from "./components/sections/Resume";
 import { Contact } from "./components/sections/Contact";
 import { CustomCursor } from "./components/ui/CustomCursor";
@@ -40,16 +34,10 @@ function App() {
           <Navbar />
           <Hero />
           <About />
-<<<<<<< HEAD
           <Experience />
           <Skills />
           <OtherProjects />
           <Certifications />
-=======
-          <Skills />
-          <FeaturedProject />
-          <OtherProjects />
->>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
           <Resume />
           <Contact />
         </>
