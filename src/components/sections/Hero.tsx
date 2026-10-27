@@ -113,7 +113,7 @@ export const Hero = () => {
                     <SocialLink href="https://www.facebook.com/profile.php?id=100051049081436" icon={<SiFacebook size={20} />} />
                     <SocialLink href="https://x.com/SUDHAGAR2506" icon={<SiX size={20} />} />
                     <SocialLink href="https://www.linkedin.com/in/sudhagar-m-323117333/" icon={<SiLinkedin size={20} />} />
-                    <SocialLink href="https://www.instagram.com/viper.zz__/" icon={<SiInstagram size={20} />} />
+                    <SocialLink href="https://www.instagram.com/sudhagarrr_/" icon={<SiInstagram size={20} />} />
                 </div>
 
                 {/* Bottom Line (Visual Balance) */}
