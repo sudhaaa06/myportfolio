@@ -7,30 +7,29 @@ export const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center relative bg-black-rich overflow-hidden px-6 lg:px-20"
+            className="min-h-screen flex items-center justify-center relative bg-black-rich overflow-hidden px-6 lg:px-20 py-16 lg:py-0"
         >
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full relative z-10">
+            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full relative z-10">
 
-                {/* Left Side: Profile Image */}
+                {/* Left Side: Profile Image (Compact, Elegant Dimensions) */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
+                    transition={{ duration: 0.9, ease: "easeOut" }}
                     className="relative order-2 lg:order-1 flex justify-center lg:justify-end"
                 >
-                    <div className="relative w-[300px] h-[400px] lg:w-[450px] lg:h-[600px] grayscale hover:grayscale-0 transition-all duration-700 ease-in-out">
-                        {/* Soft Shadow/Glow Background */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-black-rich via-transparent to-transparent z-20" />
-                        <div className="absolute -inset-4 bg-gold/10 blur-[50px] rounded-full opacity-50" />
+                    <div className="relative w-[260px] h-[350px] sm:w-[300px] sm:h-[400px] lg:w-[360px] lg:h-[480px] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_10px_40px_rgba(0,0,0,0.8)] group transition-all duration-500">
+                        {/* Ambient Back Glow */}
+                        <div className="absolute -inset-4 bg-gold/15 blur-[40px] rounded-full opacity-60 pointer-events-none" />
 
                         <img
                             src="/profile.jpg"
                             alt="SUDHAGAR M"
-                            className="w-full h-full object-cover object-center rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.8)]"
+                            className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
                         />
 
-                        {/* Overlay to blend bottom into background */}
-                        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black-rich to-transparent z-10" />
+                        {/* Subtle bottom gradient overlay */}
+                        <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black-rich via-black-rich/40 to-transparent z-10" />
                     </div>
                 </motion.div>
 
@@ -38,59 +37,62 @@ export const Hero = () => {
                 <motion.div
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
+                    transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
                     className="order-1 lg:order-2 text-left relative z-30"
                 >
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.5 }}
-                        className="text-gray-400 text-lg tracking-[0.2em] mb-4 font-sans"
+                        transition={{ delay: 0.4 }}
+                        className="text-gray-400 text-sm sm:text-base tracking-[0.25em] mb-3 font-sans font-medium uppercase"
                     >
                         I'M
                     </motion.p>
 
-                    <h1 className="text-6xl lg:text-8xl font-bold mb-6 font-serif text-gold leading-tight">
+                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-5 font-serif text-gold leading-tight tracking-tight">
                         SUDHAGAR M
                     </h1>
 
-                    <div className="h-[40px] mb-8 text-xl lg:text-2xl font-light text-gray-300 font-sans">
+                    <div className="h-[36px] mb-8 text-lg sm:text-xl lg:text-2xl font-light text-gray-300 font-sans">
                         <TypeAnimation
                             sequence={[
-                                'AI Developer',
-                                2000,
                                 'Software Engineer',
-                                2000,
+                                2500,
                                 'Full Stack Developer',
                                 2000,
-                                'Tech Innovator',
+                                'AI & ML Data Specialist',
+                                2000,
+                                'Python & Django Developer',
                                 2000,
                             ]}
                             wrapper="span"
                             speed={50}
-                            className="text-white tracking-widest uppercase"
+                            className="text-white tracking-widest uppercase font-medium"
                             repeat={Infinity}
                         />
                     </div>
 
+                    {/* Clear, High-Contrast Action Buttons */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.8 }}
-                        className="flex flex-wrap gap-4"
+                        transition={{ delay: 0.7 }}
+                        className="flex flex-wrap items-center gap-4"
                     >
+                        {/* Primary Button: Contact Me */}
                         <Link
                             to="contact"
                             smooth={true}
-                            className="inline-block px-10 py-4 border border-gold text-gold hover:bg-gold hover:text-black-rich transition-all duration-300 uppercase tracking-widest text-sm font-semibold cursor-pointer"
+                            className="inline-block px-8 py-3.5 bg-gradient-to-r from-gold via-yellow-400 to-gold text-black-rich font-bold rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer"
                         >
                             Contact Me
                         </Link>
 
+                        {/* Secondary Button: Download Resume */}
                         <a
                             href="/Sudhaa%20Resume.pdf"
                             download="Sudhaa_Resume.pdf"
-                            className="inline-block px-10 py-4 border border-gold text-gold hover:bg-gold hover:text-black-rich transition-all duration-300 uppercase tracking-widest text-sm font-semibold cursor-pointer"
+                            className="inline-block px-8 py-3.5 bg-white/10 hover:bg-gold border-2 border-gold text-white hover:text-black-rich font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer backdrop-blur-sm"
                         >
                             Download Resume
                         </a>
@@ -103,7 +105,7 @@ export const Hero = () => {
             <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.5, duration: 0.8 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
                 className="hidden lg:flex flex-col gap-6 fixed right-8 bottom-0 z-50 items-center justify-end h-[50vh]"
             >
                 {/* Top Gold Line */}
@@ -116,7 +118,7 @@ export const Hero = () => {
                     <SocialLink href="https://www.instagram.com/sudhagarrr_/" icon={<SiInstagram size={20} />} />
                 </div>
 
-                {/* Bottom Line (Visual Balance) */}
+                {/* Bottom Line */}
                 <div className="w-[1px] h-24 bg-gradient-to-t from-transparent via-gold/50 to-gold mt-4" />
             </motion.div>
 
