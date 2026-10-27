@@ -24,7 +24,11 @@ export const Hero = () => {
                         <div className="absolute -inset-4 bg-gold/10 blur-[50px] rounded-full opacity-50" />
 
                         <img
+<<<<<<< HEAD
                             src="/profile.jpg"
+=======
+                            src="/my%20photo.jpg"
+>>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
                             alt="SUDHAGAR M"
                             className="w-full h-full object-cover object-center rounded-sm shadow-[0_0_50px_rgba(0,0,0,0.8)]"
                         />

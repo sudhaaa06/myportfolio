@@ -4,14 +4,21 @@ import { Folder, Github, ExternalLink } from "lucide-react";
 
 interface Project {
     title: string;
+<<<<<<< HEAD
     badge?: string;
     description: string;
     tags: string[];
     links: { github: string; external?: string };
+=======
+    description: string;
+    tags: string[];
+    links: { github: string; external: string };
+>>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
 }
 
 const otherProjects: Project[] = [
     {
+<<<<<<< HEAD
         title: "AIWorkSync",
         badge: "AI Platform",
         description: "AI-driven career growth platform with NLP-based skill matching (NLTK) to recommend personalized courses and job roles from user profiles.",
@@ -31,11 +38,30 @@ const otherProjects: Project[] = [
         description: "Full-stack virtual productivity assistant featuring REST APIs for user authentication, real-time dashboard analytics, and automated task notifications.",
         tags: ["Python", "Django", "PostgreSQL", "REST APIs"],
         links: { github: "https://github.com/sudhaaa06", external: "https://github.com/sudhaaa06" }
+=======
+        title: "Banking Web App",
+        description: "Secure and modern banking interface with real-time transaction tracking and dashboard analytics.",
+        tags: ["React", "Node.js", "MongoDB"],
+        links: { github: "#", external: "#" }
+    },
+    {
+        title: "Hackathon Project",
+        description: "Award-winning solution for smart city management using IoT sensors and real-time data visualization.",
+        tags: ["Python", "IoT", "Flask"],
+        links: { github: "#", external: "#" }
+    },
+    {
+        title: "Mini AI Tools",
+        description: "Collection of small AI utilities including image background remover and text summarizer.",
+        tags: ["OpenAI API", "React", "Express"],
+        links: { github: "#", external: "#" }
+>>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
     }
 ];
 
 export const OtherProjects = () => {
     return (
+<<<<<<< HEAD
         <SectionWrapper id="projects" className="bg-black-rich py-24 relative overflow-hidden">
             {/* Subtle Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
@@ -125,6 +151,40 @@ export const OtherProjects = () => {
                         </motion.div>
                     ))}
                 </div>
+=======
+        <SectionWrapper id="projects" className="bg-black">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-white">Other Noteworthy Projects</h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {otherProjects.map((project, index) => (
+                    <motion.div
+                        key={index}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        viewport={{ once: true }}
+                        whileHover={{ y: -5 }}
+                        className="group p-6 rounded-xl bg-[#111] border border-white/5 hover:border-yellow-500/30 transition-all shadow-lg hover:shadow-yellow-500/10 flex flex-col h-full"
+                    >
+                        <div className="flex justify-between items-start mb-6">
+                            <Folder size={40} className="text-yellow-500" />
+                            <div className="flex gap-3 text-gray-400">
+                                <a href={project.links.github} className="hover:text-white transition-colors"><Github size={20} /></a>
+                                <a href={project.links.external} className="hover:text-white transition-colors"><ExternalLink size={20} /></a>
+                            </div>
+                        </div>
+
+                        <h3 className="text-xl font-bold mb-3 text-gray-200 group-hover:text-yellow-400 transition-colors">{project.title}</h3>
+                        <p className="text-gray-400 text-sm mb-6 flex-grow">{project.description}</p>
+
+                        <div className="flex flex-wrap gap-3 text-xs text-gray-500 font-mono">
+                            {project.tags.map(tag => (
+                                <span key={tag}>{tag}</span>
+                            ))}
+                        </div>
+                    </motion.div>
+                ))}
+>>>>>>> 7809539102a77c4a2d5532e473e0f02192b6ce77
             </div>
         </SectionWrapper>
     );
