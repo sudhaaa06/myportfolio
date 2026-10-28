@@ -68,27 +68,30 @@ export const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
 
     return (
-        <SectionWrapper id="certificates" className="bg-[#181920] py-24 relative overflow-hidden">
+        <SectionWrapper id="certificates" className="bg-[#181920] py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Lighting */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gold/5 blur-[140px] rounded-full pointer-events-none" />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-7xl mx-auto relative z-10">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-14"
+                    className="text-center mb-16"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-serif text-white tracking-tight">
+                    <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
+                        Accreditations
+                    </span>
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight mt-2">
                         Professional <span className="text-gold">Certificates</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gold/50 mx-auto rounded-full mt-4" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full mt-4" />
                 </motion.div>
 
-                {/* 2-Column Certificates Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 max-w-5xl mx-auto">
+                {/* 3-Column Certificates Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
                     {certificates.map((cert, index) => {
                         const hasAttachment = Boolean(cert.certificateUrl);
 

@@ -36,22 +36,22 @@ const otherProjects: Project[] = [
 
 export const OtherProjects = () => {
     return (
-        <SectionWrapper id="projects" className="bg-black-rich py-24 relative overflow-hidden">
+        <SectionWrapper id="projects" className="bg-black-rich py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-7xl mx-auto relative z-10">
                 <div className="text-center mb-16">
                     <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
                         Showcase
                     </span>
-                    <h2 className="text-3xl md:text-5xl font-bold font-serif text-white mt-2 mb-4">
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white mt-2 mb-4">
                         Featured <span className="text-gold">Projects</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gold/50 mx-auto rounded-full" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full" />
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {otherProjects.map((project, index) => (
                         <motion.div
                             key={project.title}
@@ -60,7 +60,7 @@ export const OtherProjects = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             viewport={{ once: true }}
                             whileHover={{ y: -8 }}
-                            className="group p-7 rounded-2xl bg-[#111317]/80 border border-white/5 hover:border-gold/40 transition-all duration-300 shadow-xl hover:shadow-[0_0_25px_rgba(212,175,55,0.12)] flex flex-col h-full backdrop-blur-sm"
+                            className="group p-8 lg:p-9 rounded-2xl bg-[#111317]/80 border border-white/5 hover:border-gold/40 transition-all duration-300 shadow-xl hover:shadow-[0_0_25px_rgba(212,175,55,0.15)] flex flex-col h-full backdrop-blur-sm"
                         >
                             <div className="flex justify-between items-start mb-6">
                                 <div className="p-3 rounded-xl bg-gold/10 border border-gold/20 text-gold group-hover:bg-gold group-hover:text-black-rich transition-colors duration-300">

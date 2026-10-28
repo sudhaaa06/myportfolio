@@ -4,33 +4,33 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 
 export const Contact = () => {
     return (
-        <SectionWrapper id="contact" className="bg-[#181920] relative py-28 overflow-hidden">
+        <SectionWrapper id="contact" className="bg-[#181920] relative py-28 md:py-32 overflow-hidden">
             {/* Subtle Ambient Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-6xl xl:max-w-7xl mx-auto relative z-10">
 
                 {/* Header with side gold lines */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex items-center justify-center gap-4 md:gap-8 mb-14"
+                    className="flex items-center justify-center gap-4 md:gap-8 mb-16"
                 >
                     <div className="h-[2px] w-12 md:w-28 bg-gold rounded-full" />
                     <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight shrink-0">
-                        Contact Me
+                        Contact <span className="text-gold">Me</span>
                     </h2>
                     <div className="h-[2px] w-12 md:w-28 bg-gold rounded-full" />
                 </motion.div>
 
-                {/* Contact Pills matching exact reference layout */}
+                {/* Contact Pills */}
                 <motion.div
                     initial={{ opacity: 0, y: 25 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                     viewport={{ once: true }}
-                    className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-5 max-w-5xl mx-auto mb-16"
+                    className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-6 max-w-6xl mx-auto mb-16"
                 >
                     {/* Email Pill */}
                     <motion.a

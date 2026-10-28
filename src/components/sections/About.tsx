@@ -31,15 +31,15 @@ export const About = () => {
     ];
 
     return (
-        <SectionWrapper id="about" className="bg-black-rich relative overflow-hidden py-28 md:py-36">
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <SectionWrapper id="about" className="bg-black-rich relative overflow-hidden py-24 md:py-32">
+            <div className="w-full max-w-6xl xl:max-w-7xl mx-auto relative z-10">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-14 flex flex-col items-center text-center gap-3"
+                    className="mb-16 flex flex-col items-center text-center gap-3"
                 >
                     <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
                         Who I Am
@@ -47,7 +47,7 @@ export const About = () => {
                     <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight">
                         About <span className="text-gold">Me</span>
                     </h2>
-                    <div className="h-[2px] w-20 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mt-1" />
+                    <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mt-1" />
                 </motion.div>
 
                 {/* Main Bio Card */}
@@ -56,7 +56,7 @@ export const About = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
                     viewport={{ once: true }}
-                    className="glass p-8 md:p-12 rounded-3xl border border-white/10 bg-charcoal/40 backdrop-blur-md shadow-2xl relative overflow-hidden mb-12 hover:border-gold/30 transition-all duration-500"
+                    className="glass p-8 md:p-12 lg:p-14 rounded-3xl border border-white/10 bg-charcoal/40 backdrop-blur-md shadow-2xl relative overflow-hidden mb-12 hover:border-gold/30 transition-all duration-500"
                 >
                     {/* Background Ambient Glows */}
                     <div className="absolute top-0 right-0 w-96 h-96 bg-gold/5 rounded-full blur-[110px] -z-10 pointer-events-none" />
@@ -83,7 +83,7 @@ export const About = () => {
                 </motion.div>
 
                 {/* Resume Highlights Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
                     {highlights.map((item, index) => {
                         const Icon = item.icon;
                         return (
@@ -93,24 +93,26 @@ export const About = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
-                                whileHover={{ y: -6, scale: 1.01 }}
-                                className="group relative p-6 md:p-7 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-gold/30 hover:bg-white/[0.06] transition-all duration-300 shadow-lg flex gap-5 items-start"
+                                whileHover={{ y: -6, scale: 1.02 }}
+                                className="group relative p-6 md:p-7 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-gold/30 hover:bg-white/[0.06] transition-all duration-300 shadow-lg flex flex-col justify-between"
                             >
-                                <div className="p-3.5 rounded-xl bg-gold/10 border border-gold/20 text-gold group-hover:bg-gold group-hover:text-black-rich transition-colors duration-300 shrink-0">
-                                    <Icon size={24} />
-                                </div>
-                                <div className="space-y-1.5">
-                                    <div className="flex flex-wrap items-center gap-2">
-                                        <h3 className="text-lg font-semibold text-white group-hover:text-gold transition-colors">
-                                            {item.title}
-                                        </h3>
-                                        <span className="text-xs px-2.5 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 font-medium">
-                                            {item.org}
-                                        </span>
+                                <div>
+                                    <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 text-gold group-hover:bg-gold group-hover:text-black-rich transition-colors duration-300 flex items-center justify-center shrink-0 mb-4">
+                                        <Icon size={24} />
                                     </div>
-                                    <p className="text-sm text-gray-400 font-light leading-relaxed">
-                                        {item.description}
-                                    </p>
+                                    <div className="space-y-2">
+                                        <div className="flex flex-col gap-1.5">
+                                            <h3 className="text-lg font-semibold text-white group-hover:text-gold transition-colors">
+                                                {item.title}
+                                            </h3>
+                                            <span className="text-xs px-2.5 py-0.5 rounded-full bg-gold/10 text-gold border border-gold/20 font-medium w-fit">
+                                                {item.org}
+                                            </span>
+                                        </div>
+                                        <p className="text-sm text-gray-400 font-light leading-relaxed pt-1">
+                                            {item.description}
+                                        </p>
+                                    </div>
                                 </div>
                             </motion.div>
                         );

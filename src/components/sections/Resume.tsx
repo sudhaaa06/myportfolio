@@ -42,7 +42,7 @@ export const Resume = () => {
             <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
             <div className="absolute bottom-1/4 right-1/4 translate-x-1/3 translate-y-1/3 w-[500px] h-[300px] bg-yellow-500/5 blur-[140px] rounded-full pointer-events-none" />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-6xl xl:max-w-7xl mx-auto relative z-10">
 
                 {/* Section Header */}
                 <motion.div
@@ -56,7 +56,7 @@ export const Resume = () => {
                         <span>Curriculum Vitae</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl font-bold font-serif text-white tracking-tight">
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight mt-2">
                         Professional <span className="text-gold italic">Resume</span>
                     </h2>
 
@@ -73,13 +73,13 @@ export const Resume = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative max-w-5xl mx-auto rounded-3xl p-6 sm:p-8 md:p-12 bg-gradient-to-br from-[#1c1e27] via-[#14161f] to-[#0c0d12] border border-gold/25 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl group hover:border-gold/40 transition-all duration-500 overflow-hidden"
+                    className="relative w-full max-w-5xl xl:max-w-6xl mx-auto rounded-3xl p-8 sm:p-10 md:p-12 lg:p-14 bg-gradient-to-br from-[#1c1e27] via-[#14161f] to-[#0c0d12] border border-gold/25 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl group hover:border-gold/40 transition-all duration-500 overflow-hidden"
                 >
                     {/* Subtle Golden Grid Pattern & Watermark */}
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.06),transparent_60%)] pointer-events-none" />
                     <div className="absolute -top-12 -right-12 w-48 h-48 bg-gold/5 blur-[60px] rounded-full pointer-events-none" />
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative z-10">
 
                         {/* Left Column: Realistic 3D Interactive CV Sheet Mockup */}
                         <div className="lg:col-span-5 flex justify-center">

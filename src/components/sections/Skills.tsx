@@ -180,26 +180,26 @@ export const Skills = () => {
         : skills.filter((skill) => skill.category === activeTab);
 
     return (
-        <SectionWrapper id="skills" className="bg-[#181920] py-24 md:py-28 relative overflow-hidden">
+        <SectionWrapper id="skills" className="bg-[#181920] py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Lighting */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-gold/5 blur-[140px] rounded-full pointer-events-none" />
 
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-7xl mx-auto relative z-10">
 
                 {/* Section Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-12"
+                    className="text-center mb-14"
                 >
                     <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
                         Technical Stack
                     </span>
-                    <h2 className="text-4xl md:text-5xl font-bold font-serif text-white mt-2 mb-4 tracking-tight">
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white mt-2 mb-4 tracking-tight">
                         My <span className="text-gold">Skills</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full" />
                 </motion.div>
 
                 {/* Interactive Category Filter Tabs */}
@@ -207,7 +207,7 @@ export const Skills = () => {
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-14"
+                    className="flex flex-wrap items-center justify-center gap-2.5 md:gap-3.5 mb-16"
                 >
                     {categories.map((cat) => {
                         const isActive = activeTab === cat;
@@ -215,7 +215,7 @@ export const Skills = () => {
                             <button
                                 key={cat}
                                 onClick={() => setActiveTab(cat)}
-                                className={`px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${
+                                className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${
                                     isActive
                                         ? "bg-gold text-black-rich border-gold font-bold shadow-[0_0_15px_rgba(212,175,55,0.35)]"
                                         : "bg-[#232630]/80 text-gray-400 border-white/5 hover:border-gold/30 hover:text-white"
@@ -230,7 +230,7 @@ export const Skills = () => {
                 {/* Skills Grid */}
                 <motion.div
                     layout
-                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 md:gap-5"
+                    className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-5 lg:gap-6"
                 >
                     <AnimatePresence>
                         {filteredSkills.map((skill) => {

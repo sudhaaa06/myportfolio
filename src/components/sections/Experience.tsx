@@ -33,11 +33,11 @@ const experiences: ExperienceItem[] = [
 
 export const Experience = () => {
     return (
-        <SectionWrapper id="experience" className="bg-[#181920] py-24 md:py-28 relative overflow-hidden">
+        <SectionWrapper id="experience" className="bg-[#181920] py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Glow */}
             <div className="absolute top-1/3 left-10 w-[500px] h-[300px] bg-gold/5 blur-[130px] rounded-full pointer-events-none" />
 
-            <div className="max-w-4xl mx-auto px-6 relative z-10">
+            <div className="w-full max-w-5xl lg:max-w-6xl mx-auto relative z-10">
 
                 {/* Section Header */}
                 <motion.div
@@ -46,10 +46,13 @@ export const Experience = () => {
                     viewport={{ once: true }}
                     className="mb-16 md:mb-20 text-center md:text-left"
                 >
-                    <h2 className="text-4xl md:text-5xl font-bold font-serif text-white tracking-tight">
-                        Experience
+                    <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
+                        Career Path
+                    </span>
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight mt-2">
+                        Professional <span className="text-gold">Experience</span>
                     </h2>
-                    <div className="w-20 h-1 bg-gold/60 rounded-full mt-4 mx-auto md:mx-0" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-gold via-gold to-transparent rounded-full mt-4 mx-auto md:mx-0" />
                 </motion.div>
 
                 {/* Timeline Container */}
@@ -68,46 +71,46 @@ export const Experience = () => {
                                 className="relative flex items-start gap-6 md:gap-10 group"
                             >
                                 {/* Left Year Badge & Node */}
-                                <div className="flex items-center gap-3 md:gap-4 shrink-0 pt-1">
+                                <div className="flex items-center gap-3 md:gap-4 shrink-0 pt-2">
                                     {/* Year Pill */}
-                                    <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-gray-300 font-mono text-xs md:text-sm font-medium tracking-wider group-hover:border-gold/40 group-hover:text-gold transition-colors">
+                                    <span className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-gray-300 font-mono text-xs md:text-sm font-medium tracking-wider group-hover:border-gold/40 group-hover:text-gold transition-colors">
                                         {exp.year}
                                     </span>
 
                                     {/* Glowing Timeline Dot */}
                                     <div className="relative flex items-center justify-center">
-                                        <div className="w-3.5 h-3.5 rounded-full bg-gold shadow-[0_0_12px_rgba(212,175,55,0.7)] group-hover:scale-125 transition-transform duration-300 z-10" />
-                                        <div className="absolute w-6 h-6 rounded-full bg-gold/20 animate-ping pointer-events-none" />
+                                        <div className="w-4 h-4 rounded-full bg-gold shadow-[0_0_15px_rgba(212,175,55,0.8)] group-hover:scale-125 transition-transform duration-300 z-10" />
+                                        <div className="absolute w-7 h-7 rounded-full bg-gold/20 animate-ping pointer-events-none" />
                                     </div>
                                 </div>
 
                                 {/* Right Content Card */}
-                                <div className="flex-1 pb-4">
-                                    <div className="mb-3">
-                                        <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-gold transition-colors font-serif">
+                                <div className="flex-1 p-6 md:p-8 lg:p-9 rounded-2xl bg-[#20232c]/80 border border-white/5 hover:border-gold/30 hover:bg-[#252834] transition-all duration-300 shadow-xl backdrop-blur-sm">
+                                    <div className="mb-4">
+                                        <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-gold transition-colors font-serif">
                                             {exp.role}
                                         </h3>
-                                        <div className="flex flex-wrap items-center gap-2 mt-1">
-                                            <span className="text-gray-300 text-sm md:text-base font-medium">
+                                        <div className="flex flex-wrap items-center gap-3 mt-2">
+                                            <span className="text-gold font-medium text-base md:text-lg">
                                                 {exp.company}
                                             </span>
-                                            <span className="text-gray-500 text-xs">•</span>
-                                            <span className="text-gold/90 text-xs md:text-sm font-mono">
+                                            <span className="text-gray-500 text-sm">•</span>
+                                            <span className="text-gray-400 text-xs md:text-sm font-mono">
                                                 {exp.duration}
                                             </span>
                                         </div>
                                     </div>
 
-                                    <p className="text-gray-400 text-sm md:text-base leading-relaxed font-light mb-4">
+                                    <p className="text-gray-300 text-base md:text-lg leading-relaxed font-light mb-6">
                                         {exp.description}
                                     </p>
 
                                     {/* Skills Tags */}
-                                    <div className="flex flex-wrap gap-2 pt-1">
+                                    <div className="flex flex-wrap gap-2.5 pt-1">
                                         {exp.skills.map((skill) => (
                                             <span
                                                 key={skill}
-                                                className="text-xs px-2.5 py-0.5 rounded-full bg-white/[0.04] text-gray-300 border border-white/5 group-hover:border-gold/20 transition-colors"
+                                                className="text-xs md:text-sm px-3.5 py-1 rounded-full bg-white/[0.04] text-gray-300 border border-white/10 group-hover:border-gold/30 group-hover:text-white transition-colors"
                                             >
                                                 {skill}
                                             </span>

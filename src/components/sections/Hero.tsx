@@ -7,18 +7,18 @@ export const Hero = () => {
     return (
         <section
             id="home"
-            className="min-h-screen flex items-center justify-center relative bg-black-rich overflow-hidden px-6 lg:px-20 py-16 lg:py-0"
+            className="min-h-screen w-full flex items-center justify-center relative bg-black-rich overflow-hidden px-6 sm:px-8 lg:px-12 py-20 lg:py-0"
         >
-            <div className="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center h-full relative z-10">
+            <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-16 items-center relative z-10">
 
-                {/* Left Side: Profile Image (Compact, Elegant Dimensions) */}
+                {/* Left Side: Profile Image */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.9, ease: "easeOut" }}
-                    className="relative order-2 lg:order-1 flex justify-center lg:justify-end"
+                    className="relative order-2 lg:order-1 lg:col-span-5 flex justify-center lg:justify-end"
                 >
-                    <div className="relative w-[260px] h-[350px] sm:w-[300px] sm:h-[400px] lg:w-[360px] lg:h-[480px] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_10px_40px_rgba(0,0,0,0.8)] group transition-all duration-500">
+                    <div className="relative w-[280px] h-[370px] sm:w-[320px] sm:h-[420px] md:w-[350px] md:h-[460px] lg:w-[390px] lg:h-[510px] xl:w-[420px] xl:h-[550px] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_10px_40px_rgba(0,0,0,0.8)] group transition-all duration-500">
                         {/* Ambient Back Glow */}
                         <div className="absolute -inset-4 bg-gold/15 blur-[40px] rounded-full opacity-60 pointer-events-none" />
 
@@ -38,22 +38,22 @@ export const Hero = () => {
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-                    className="order-1 lg:order-2 text-left relative z-30"
+                    className="order-1 lg:order-2 lg:col-span-7 text-left relative z-30"
                 >
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
-                        className="text-gray-400 text-sm sm:text-base tracking-[0.25em] mb-3 font-sans font-medium uppercase"
+                        className="text-gray-400 text-sm sm:text-base lg:text-lg tracking-[0.25em] mb-3 font-sans font-medium uppercase"
                     >
                         I'M
                     </motion.p>
 
-                    <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-5 font-serif text-gold leading-tight tracking-tight">
+                    <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-8xl font-bold mb-5 font-serif text-gold leading-tight tracking-tight">
                         SUDHAGAR M
                     </h1>
 
-                    <div className="h-[36px] mb-8 text-lg sm:text-xl lg:text-2xl font-light text-gray-300 font-sans">
+                    <div className="h-[40px] mb-8 text-lg sm:text-xl md:text-2xl lg:text-3xl font-light text-gray-300 font-sans">
                         <TypeAnimation
                             sequence={[
                                 'Software Engineer',
@@ -77,13 +77,13 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.7 }}
-                        className="flex flex-wrap items-center gap-4"
+                        className="flex flex-wrap items-center gap-4 sm:gap-5"
                     >
                         {/* Primary Button: Contact Me */}
                         <Link
                             to="contact"
                             smooth={true}
-                            className="inline-block px-8 py-3.5 bg-gradient-to-r from-gold via-yellow-400 to-gold text-black-rich font-bold rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer"
+                            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-gold via-yellow-400 to-gold text-black-rich font-bold rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer"
                         >
                             Contact Me
                         </Link>
@@ -92,7 +92,7 @@ export const Hero = () => {
                         <a
                             href="/Sudhaa%20Resume.pdf"
                             download="Sudhaa_Resume.pdf"
-                            className="inline-block px-8 py-3.5 bg-white/10 hover:bg-gold border-2 border-gold text-white hover:text-black-rich font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer backdrop-blur-sm"
+                            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white/10 hover:bg-gold border-2 border-gold text-white hover:text-black-rich font-bold rounded-full shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider text-xs sm:text-sm cursor-pointer backdrop-blur-sm"
                         >
                             Download Resume
                         </a>
