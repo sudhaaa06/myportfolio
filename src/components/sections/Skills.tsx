@@ -48,7 +48,6 @@ const skills: Skill[] = [
         icon: Database,
         color: "#F29111",
         level: "Queries & Joins",
-        featured: true,
     },
 
     // Backend & Web
@@ -89,7 +88,6 @@ const skills: Skill[] = [
         icon: SiPostgresql,
         color: "#4169E1",
         level: "Relational DB",
-        featured: true,
     },
     {
         name: "RDBMS Schema",
@@ -113,7 +111,6 @@ const skills: Skill[] = [
         icon: Brain,
         color: "#FFD700",
         level: "Natural Language",
-        featured: true,
     },
     {
         name: "ML Data Operations",
@@ -121,7 +118,6 @@ const skills: Skill[] = [
         icon: ShieldCheck,
         color: "#FF9900",
         level: "Validation & 99%+ QA",
-        featured: true,
     },
 
     // Tools & Platforms
@@ -139,6 +135,7 @@ const skills: Skill[] = [
         icon: SiGithub,
         color: "#F05032",
         level: "Version Control",
+        featured: true,
     },
     {
         name: "Linux",
@@ -244,16 +241,19 @@ export const Skills = () => {
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.3 }}
                                     whileHover={{ y: -6, scale: 1.02 }}
-                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 backdrop-blur-sm ${
+                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 backdrop-blur-sm bg-[#232630]/70 shadow-lg ${
                                         skill.featured
-                                            ? "bg-gradient-to-br from-gold/15 to-yellow-600/10 border border-gold/40 shadow-[0_0_20px_rgba(212,175,55,0.12)] hover:border-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.25)]"
-                                            : "bg-[#232630]/70 border border-white/5 hover:border-gold/30 hover:bg-[#2a2e3a] shadow-lg"
+                                            ? "border border-gold/40 hover:border-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
+                                            : "border border-white/5 hover:border-gold/30 hover:bg-[#2a2e3a]"
                                     }`}
                                 >
-                                    {/* Featured Badge */}
+                                    {/* Full Highlight Star Badge */}
                                     {skill.featured && (
-                                        <div className="absolute -top-2 -right-2 flex items-center justify-center w-6 h-6 rounded-full bg-gold text-black-rich shadow-[0_0_10px_rgba(212,175,55,0.6)] z-10" title="Core Expertise">
-                                            <Star size={12} className="fill-black-rich" />
+                                        <div
+                                            className="absolute -top-2.5 -right-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-yellow-300 via-gold to-yellow-600 text-black-rich shadow-[0_0_15px_rgba(212,175,55,0.75)] border-2 border-[#181920] z-10 transition-transform group-hover:scale-110"
+                                            title="Core Highlight"
+                                        >
+                                            <Star size={13} className="fill-black-rich text-black-rich" />
                                         </div>
                                     )}
 

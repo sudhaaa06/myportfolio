@@ -63,7 +63,7 @@ export const Contact = () => {
                     >
                         <MapPin size={18} className="text-white shrink-0 group-hover:scale-110 transition-transform" />
                         <span className="text-gold font-medium text-sm md:text-base tracking-wide">
-                            Tamil Nadu, India
+                            Coimbatore, Tamil Nadu, India
                         </span>
                     </motion.div>
                 </motion.div>
