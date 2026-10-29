@@ -1,369 +1,476 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionWrapper from "../layout/SectionWrapper";
 import {
-    FileText,
     Download,
     Eye,
     ExternalLink,
     X,
-    Sparkles,
+    Maximize2,
+    FileText,
+    ArrowUpRight,
     GraduationCap,
     Briefcase,
-    CheckCircle2,
-    Award,
-    ShieldCheck
+    Code2,
+    Check
 } from "lucide-react";
 
 export const Resume = () => {
+    const [viewMode, setViewMode] = useState<"spec" | "preview">("spec");
     const [isViewerOpen, setIsViewerOpen] = useState(false);
-
-    // Close modal on Escape key
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === "Escape") setIsViewerOpen(false);
-        };
-        if (isViewerOpen) {
-            window.addEventListener("keydown", handleKeyDown);
-            document.body.style.overflow = "hidden";
-        }
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-            document.body.style.overflow = "unset";
-        };
-    }, [isViewerOpen]);
+    const [copied, setCopied] = useState(false);
+    const dialogRef = useRef<HTMLDialogElement>(null);
 
     const resumePdfUrl = "/Sudhaa%20Resume.pdf";
     const downloadFileName = "Sudhagar_M_Resume.pdf";
 
+    // Handle modal dialog using native <dialog> with modern light-dismiss & fallbacks
+    useEffect(() => {
+        const dialog = dialogRef.current;
+        if (!dialog) return;
+
+        if (isViewerOpen) {
+            dialog.showModal();
+            document.body.style.overflow = "hidden";
+        } else {
+            dialog.close();
+            document.body.style.overflow = "unset";
+        }
+
+        const handleCancel = () => setIsViewerOpen(false);
+        dialog.addEventListener("cancel", handleCancel);
+
+        // Fallback for browsers without native closedby support
+        const handleBackdropClick = (e: MouseEvent) => {
+            if (e.target !== dialog) return;
+            const rect = dialog.getBoundingClientRect();
+            const isInDialog = (
+                rect.top <= e.clientY &&
+                e.clientY <= rect.top + rect.height &&
+                rect.left <= e.clientX &&
+                e.clientX <= rect.left + rect.width
+            );
+            if (!isInDialog) {
+                setIsViewerOpen(false);
+            }
+        };
+
+        dialog.addEventListener("click", handleBackdropClick);
+
+        return () => {
+            dialog.removeEventListener("cancel", handleCancel);
+            dialog.removeEventListener("click", handleBackdropClick);
+            document.body.style.overflow = "unset";
+        };
+    }, [isViewerOpen]);
+
+    const handleCopyDetails = () => {
+        navigator.clipboard.writeText("Sudhagar M - Software Engineer & ML Operations Associate | sudhagar06112003@gmail.com");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
     return (
         <SectionWrapper id="resume" className="bg-black-rich py-24 md:py-32 relative overflow-hidden">
-            {/* Atmospheric Ambient Glows */}
-            <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gold/10 blur-[150px] rounded-full pointer-events-none" />
-            <div className="absolute bottom-1/4 right-1/4 translate-x-1/3 translate-y-1/3 w-[500px] h-[300px] bg-yellow-500/5 blur-[140px] rounded-full pointer-events-none" />
+            {/* Subtle atmospheric ambient glow */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gold/[0.04] blur-[160px] rounded-full pointer-events-none" />
 
-            <div className="w-full max-w-6xl xl:max-w-7xl mx-auto relative z-10">
+            <div className="w-full max-w-5xl mx-auto relative z-10">
 
-                {/* Section Header */}
+                {/* Minimal Header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 md:mb-20 text-center flex flex-col items-center gap-3"
+                    className="mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8"
                 >
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs font-semibold tracking-widest uppercase shadow-[0_0_15px_rgba(212,175,55,0.15)]">
-                        <Sparkles size={13} className="text-gold animate-pulse" />
-                        <span>Curriculum Vitae</span>
+                    <div>
+                        <div className="flex items-center gap-2 font-mono text-xs text-gold/80 tracking-widest uppercase mb-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                            <span>INDEX 06 // CURRICULUM VITAE</span>
+                        </div>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white tracking-tight">
+                            Professional <span className="italic text-gold">Dossier</span>
+                        </h2>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white tracking-tight mt-2">
-                        Professional <span className="text-gold italic">Resume</span>
-                    </h2>
+                    <div className="flex items-center gap-3">
+                        {/* View Switcher: Minimalist Segmented Control */}
+                        <div className="inline-flex p-1 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-mono">
+                            <button
+                                onClick={() => setViewMode("spec")}
+                                className={`relative px-4 py-1.5 rounded-lg transition-colors cursor-pointer ${
+                                    viewMode === "spec" ? "text-black-rich font-semibold" : "text-gray-400 hover:text-white"
+                                }`}
+                            >
+                                {viewMode === "spec" && (
+                                    <motion.div
+                                        layoutId="resume-tab-highlight"
+                                        className="absolute inset-0 bg-gold rounded-lg -z-10"
+                                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                    />
+                                )}
+                                Spec Sheet
+                            </button>
 
-                    <div className="h-[2px] w-24 bg-gradient-to-r from-transparent via-gold to-transparent rounded-full mt-1" />
-
-                    <p className="text-gray-400 font-light max-w-xl text-center text-sm md:text-base mt-2">
-                        A verified record of technical competencies, academic foundation, and engineering experience.
-                    </p>
+                            <button
+                                onClick={() => setViewMode("preview")}
+                                className={`relative px-4 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1.5 ${
+                                    viewMode === "preview" ? "text-black-rich font-semibold" : "text-gray-400 hover:text-white"
+                                }`}
+                            >
+                                {viewMode === "preview" && (
+                                    <motion.div
+                                        layoutId="resume-tab-highlight"
+                                        className="absolute inset-0 bg-gold rounded-lg -z-10"
+                                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                    />
+                                )}
+                                <Eye size={12} />
+                                Live Canvas
+                            </button>
+                        </div>
+                    </div>
                 </motion.div>
 
-                {/* Main Interactive Showcase Card */}
+                {/* Main Minimalist Monolith Container */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative w-full max-w-5xl xl:max-w-6xl mx-auto rounded-3xl p-8 sm:p-10 md:p-12 lg:p-14 bg-gradient-to-br from-[#1c1e27] via-[#14161f] to-[#0c0d12] border border-gold/25 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.8)] backdrop-blur-xl group hover:border-gold/40 transition-all duration-500 overflow-hidden"
+                    className="relative rounded-2xl border border-white/10 bg-[#0c0d12]/90 backdrop-blur-xl shadow-2xl overflow-hidden"
                 >
-                    {/* Subtle Golden Grid Pattern & Watermark */}
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.06),transparent_60%)] pointer-events-none" />
-                    <div className="absolute -top-12 -right-12 w-48 h-48 bg-gold/5 blur-[60px] rounded-full pointer-events-none" />
+                    {/* Top Status Strip */}
+                    <div className="flex flex-wrap items-center justify-between gap-4 px-6 sm:px-8 py-3.5 border-b border-white/5 bg-white/[0.02] text-[11px] font-mono text-gray-400">
+                        <div className="flex items-center gap-4">
+                            <span className="flex items-center gap-2 text-white">
+                                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                                AVAILABLE FOR FULL-TIME ROLES
+                            </span>
+                            <span className="hidden sm:inline text-white/20">|</span>
+                            <span className="hidden sm:inline">REF: SM-ENG-2026</span>
+                        </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center relative z-10">
+                        <div className="flex items-center gap-4 text-gray-400">
+                            <span>FORMAT: PDF (ATS-PARSED)</span>
+                            <span className="text-white/20">|</span>
+                            <span className="text-gold font-medium">TAMIL NADU, INDIA</span>
+                        </div>
+                    </div>
 
-                        {/* Left Column: Realistic 3D Interactive CV Sheet Mockup */}
-                        <div className="lg:col-span-5 flex justify-center">
+                    {/* Content View Switching with Framer Motion */}
+                    <AnimatePresence mode="wait">
+                        {viewMode === "spec" ? (
+                            /* VIEW 1: Minimalist Executive Spec Sheet */
                             <motion.div
-                                whileHover={{ scale: 1.02, rotate: 0.5 }}
+                                key="spec-view"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
                                 transition={{ duration: 0.3 }}
-                                onClick={() => setIsViewerOpen(true)}
-                                className="relative w-full max-w-[340px] cursor-pointer group/paper select-none"
+                                className="p-6 sm:p-8 md:p-10 lg:p-12 space-y-10"
                             >
-                                {/* Back Glow */}
-                                <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-gold/30 via-yellow-400/20 to-gold/30 blur-md opacity-60 group-hover/paper:opacity-100 transition-opacity duration-500" />
-
-                                {/* Document Sheet */}
-                                <div className="relative rounded-2xl bg-gradient-to-b from-[#1f232f] via-[#161821] to-[#101217] p-6 border border-gold/40 shadow-2xl overflow-hidden flex flex-col justify-between min-h-[440px]">
-
-                                    {/* Top Corner Ribbon / Badge */}
-                                    <div className="flex items-center justify-between pb-4 border-b border-white/10">
-                                        <div className="flex items-center gap-1.5">
-                                            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                                            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
-                                            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80" />
+                                {/* Candidate Overview Header */}
+                                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                                    <div className="lg:col-span-7 space-y-3">
+                                        <div className="inline-block px-2.5 py-0.5 rounded text-[10px] font-mono tracking-wider uppercase text-gold bg-gold/10 border border-gold/20">
+                                            Curriculum Vitae
                                         </div>
-                                        <span className="text-[10px] font-mono font-semibold tracking-wider text-gold bg-gold/10 px-2.5 py-0.5 rounded-full border border-gold/30 flex items-center gap-1">
-                                            <ShieldCheck size={11} /> 2026 VERIFIED
-                                        </span>
+                                        <h3 className="text-3xl sm:text-4xl font-serif text-white tracking-tight">
+                                            Sudhagar M
+                                        </h3>
+                                        <p className="text-sm sm:text-base text-gold/90 font-medium font-sans">
+                                            Software Engineer &bull; ML Operations Associate
+                                        </p>
+                                        <p className="text-gray-400 text-sm leading-relaxed font-light pt-1">
+                                            Information Technology graduate from Anna University with professional experience spanning backend engineering in Python & Django, relational databases in PostgreSQL, and high-volume ML dataset operations at Amazon with 99%+ accuracy benchmarks.
+                                        </p>
                                     </div>
 
-                                    {/* Simulated Resume Content Header */}
-                                    <div className="mt-4 space-y-1">
-                                        <div className="text-xl font-bold font-serif text-white tracking-wide flex items-center justify-between">
-                                            <span>SUDHAGAR M</span>
-                                            <FileText size={18} className="text-gold" />
-                                        </div>
-                                        <p className="text-xs text-gold/90 font-medium">Software Engineer • ML Data Specialist</p>
-                                        <p className="text-[11px] text-gray-400">Anna University • Tamil Nadu, India</p>
-                                    </div>
-
-                                    {/* Mini Simulated Sections */}
-                                    <div className="space-y-3.5 my-4 text-left">
-                                        {/* Education */}
-                                        <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
-                                            <div className="flex items-center gap-2 text-xs font-semibold text-gray-200 mb-1">
-                                                <GraduationCap size={13} className="text-gold shrink-0" />
-                                                <span>B.Tech Information Technology</span>
-                                            </div>
-                                            <div className="text-[11px] text-gray-400 pl-5">
-                                                Anna University • CGPA: 8.0 / 10
+                                    {/* Minimalist Telemetry Matrix */}
+                                    <div className="lg:col-span-5 grid grid-cols-2 gap-px bg-white/10 rounded-xl overflow-hidden border border-white/10">
+                                        <div className="bg-[#0e1017] p-4 flex flex-col justify-between">
+                                            <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">Undergraduate</span>
+                                            <div className="mt-2">
+                                                <div className="text-2xl font-bold font-mono text-gold">8.0</div>
+                                                <div className="text-[11px] text-gray-400">CGPA &bull; Anna Univ</div>
                                             </div>
                                         </div>
 
-                                        {/* Experience */}
-                                        <div className="p-2.5 rounded-lg bg-white/5 border border-white/5">
-                                            <div className="flex items-center gap-2 text-xs font-semibold text-gray-200 mb-1">
-                                                <Briefcase size={13} className="text-gold shrink-0" />
-                                                <span>ML Data Operations</span>
-                                            </div>
-                                            <div className="text-[11px] text-gray-400 pl-5">
-                                                Amazon • 99%+ Accuracy Benchmark
+                                        <div className="bg-[#0e1017] p-4 flex flex-col justify-between">
+                                            <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">ML Benchmark</span>
+                                            <div className="mt-2">
+                                                <div className="text-2xl font-bold font-mono text-gold">99%+</div>
+                                                <div className="text-[11px] text-gray-400">Amazon ML Ops QA</div>
                                             </div>
                                         </div>
 
-                                        {/* Skills Pill Row */}
-                                        <div className="flex flex-wrap gap-1.5 pt-1">
-                                            {["Python", "Django", "PostgreSQL", "ML Ops", "REST APIs", "Docker"].map((sk) => (
-                                                <span key={sk} className="text-[10px] px-2 py-0.5 rounded bg-gold/10 text-gold/90 border border-gold/20 font-mono">
-                                                    {sk}
-                                                </span>
-                                            ))}
+                                        <div className="bg-[#0e1017] p-4 flex flex-col justify-between">
+                                            <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">Credentials</span>
+                                            <div className="mt-2">
+                                                <div className="text-2xl font-bold font-mono text-gold">10+</div>
+                                                <div className="text-[11px] text-gray-400">Verified Certificates</div>
+                                            </div>
+                                        </div>
+
+                                        <div className="bg-[#0e1017] p-4 flex flex-col justify-between">
+                                            <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400">Resume Format</span>
+                                            <div className="mt-2">
+                                                <div className="text-2xl font-bold font-mono text-gold">ATS</div>
+                                                <div className="text-[11px] text-gray-400">100% Machine Parsed</div>
+                                            </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    {/* Bottom Verified Gold Stamp */}
-                                    <div className="pt-3 border-t border-white/10 flex items-center justify-between text-gray-400 text-[11px]">
-                                        <div className="flex items-center gap-1.5 text-gray-400">
-                                            <Award size={13} className="text-gold" />
-                                            <span>10+ Certifications</span>
+                                {/* Divider */}
+                                <div className="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+                                {/* 3-Column Core Highlights */}
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                    <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 hover:border-gold/30 transition-colors">
+                                        <div className="flex items-center gap-2 text-gold text-xs font-mono uppercase tracking-wider">
+                                            <GraduationCap size={15} />
+                                            <span>01 / Academics</span>
                                         </div>
-                                        <span className="font-mono text-gray-500">PDF • ~30 KB</span>
+                                        <h4 className="text-sm font-semibold text-white">B.Tech Information Technology</h4>
+                                        <p className="text-xs text-gray-400 leading-relaxed font-light">
+                                            Anna University graduate. Rigorous coursework in algorithms, data structures, database design, and systems engineering.
+                                        </p>
                                     </div>
 
-                                    {/* Hover Overlay with Live Inspection Prompt */}
-                                    <div className="absolute inset-0 bg-black/60 backdrop-blur-[3px] opacity-0 group-hover/paper:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3 p-6 text-center">
-                                        <div className="w-14 h-14 rounded-full bg-gold/20 border border-gold flex items-center justify-center text-gold shadow-[0_0_20px_rgba(212,175,55,0.5)] transform group-hover/paper:scale-110 transition-transform">
-                                            <Eye size={24} />
+                                    <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 hover:border-gold/30 transition-colors">
+                                        <div className="flex items-center gap-2 text-gold text-xs font-mono uppercase tracking-wider">
+                                            <Briefcase size={15} />
+                                            <span>02 / Experience</span>
                                         </div>
-                                        <div>
-                                            <p className="text-white font-bold text-sm">Interactive Preview</p>
-                                            <p className="text-gold text-xs">Click to read full CV</p>
+                                        <h4 className="text-sm font-semibold text-white">ML Operations Associate</h4>
+                                        <p className="text-xs text-gray-400 leading-relaxed font-light">
+                                            Amazon ML Data Operations. Maintained high-volume dataset validation, root-cause error audits, and model evaluation standards.
+                                        </p>
+                                    </div>
+
+                                    <div className="p-5 rounded-xl bg-white/[0.02] border border-white/5 space-y-2 hover:border-gold/30 transition-colors">
+                                        <div className="flex items-center gap-2 text-gold text-xs font-mono uppercase tracking-wider">
+                                            <Code2 size={15} />
+                                            <span>03 / Engineering</span>
                                         </div>
+                                        <h4 className="text-sm font-semibold text-white">Backend & REST APIs</h4>
+                                        <p className="text-xs text-gray-400 leading-relaxed font-light">
+                                            Proficient in Python, Django, PostgreSQL, and scalable API architecture with containerized deployment workflows.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Skills Pill Strip */}
+                                <div className="space-y-3">
+                                    <span className="text-[10px] font-mono uppercase tracking-wider text-gray-400 block">
+                                        Verified Tech Stack
+                                    </span>
+                                    <div className="flex flex-wrap gap-2">
+                                        {[
+                                            "Python",
+                                            "Django",
+                                            "PostgreSQL",
+                                            "REST APIs",
+                                            "Machine Learning Ops",
+                                            "Docker",
+                                            "Git",
+                                            "Data Structures",
+                                            "Algorithms",
+                                            "Database Schema Design"
+                                        ].map((skill) => (
+                                            <span
+                                                key={skill}
+                                                className="px-3 py-1 rounded-md text-xs font-mono bg-white/[0.03] text-gray-300 border border-white/10 hover:border-gold/40 hover:text-gold transition-colors"
+                                            >
+                                                {skill}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Minimal Action Bar */}
+                                <div className="pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-4">
+                                    <div className="flex flex-wrap items-center gap-3">
+                                        {/* Primary Download Button */}
+                                        <a
+                                            href={resumePdfUrl}
+                                            download={downloadFileName}
+                                            className="group relative inline-flex items-center gap-2 px-6 py-3 bg-gold text-black-rich font-semibold text-xs rounded-xl hover:bg-gold-light active:scale-[0.98] transition-all shadow-md shadow-gold/10"
+                                        >
+                                            <Download size={15} className="transition-transform group-hover:-translate-y-0.5" />
+                                            <span>Download Curriculum Vitae</span>
+                                            <span className="text-[10px] opacity-70 font-mono">PDF &bull; ~30 KB</span>
+                                        </a>
+
+                                        {/* Quick Interactive Preview Trigger */}
+                                        <button
+                                            onClick={() => setIsViewerOpen(true)}
+                                            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-white/15 bg-white/[0.02] text-xs font-semibold text-white hover:border-gold/40 hover:text-gold hover:bg-gold/5 transition-all cursor-pointer"
+                                        >
+                                            <Eye size={15} className="text-gold" />
+                                            <span>Fullscreen Inspection</span>
+                                        </button>
+
+                                        {/* Open in New Window */}
+                                        <a
+                                            href={resumePdfUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="p-3 rounded-xl border border-white/10 text-gray-400 hover:text-white hover:border-white/20 transition-colors"
+                                            title="Open raw PDF in new browser tab"
+                                        >
+                                            <ExternalLink size={15} />
+                                        </a>
+                                    </div>
+
+                                    {/* Quick Copy Contact Details Button */}
+                                    <button
+                                        onClick={handleCopyDetails}
+                                        className="text-[11px] font-mono text-gray-400 hover:text-gold transition-colors flex items-center gap-1.5 cursor-pointer"
+                                    >
+                                        {copied ? (
+                                            <>
+                                                <Check size={13} className="text-emerald-400" />
+                                                <span className="text-emerald-400">Copied to clipboard</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>Copy Bio & Contact</span>
+                                                <ArrowUpRight size={13} />
+                                            </>
+                                        )}
+                                    </button>
+                                </div>
+                            </motion.div>
+                        ) : (
+                            /* VIEW 2: Inline Live Document Canvas */
+                            <motion.div
+                                key="canvas-view"
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                                transition={{ duration: 0.3 }}
+                                className="flex flex-col"
+                            >
+                                {/* Canvas Sub-Toolbar */}
+                                <div className="flex items-center justify-between px-6 py-3 border-b border-white/5 bg-black/40 text-xs">
+                                    <div className="flex items-center gap-2 text-gray-400 font-mono text-[11px]">
+                                        <FileText size={14} className="text-gold" />
+                                        <span>Sudhaa Resume.pdf &bull; 1 Page Document</span>
+                                    </div>
+
+                                    <div className="flex items-center gap-2">
+                                        <button
+                                            onClick={() => setIsViewerOpen(true)}
+                                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-white/10 text-xs text-gray-300 hover:text-white hover:border-gold/30 transition-colors cursor-pointer"
+                                        >
+                                            <Maximize2 size={13} />
+                                            <span>Fullscreen</span>
+                                        </button>
+                                        <a
+                                            href={resumePdfUrl}
+                                            download={downloadFileName}
+                                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gold text-black-rich text-xs font-semibold hover:bg-gold-light transition-colors"
+                                        >
+                                            <Download size={13} />
+                                            <span>Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                {/* Embedded Iframe Frame */}
+                                <div className="w-full h-[580px] bg-[#08090c] relative">
+                                    <iframe
+                                        src={`${resumePdfUrl}#view=FitH`}
+                                        title="Sudhagar M Resume Live Canvas"
+                                        className="w-full h-full border-none"
+                                    />
+                                    {/* Fallback container if iframe blocked */}
+                                    <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center p-6 text-center text-gray-400">
+                                        <p className="text-sm mb-4">PDF preview unavailable directly inside this frame.</p>
+                                        <a
+                                            href={resumePdfUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="px-4 py-2 bg-gold text-black-rich font-semibold text-xs rounded-lg"
+                                        >
+                                            Open in New Window
+                                        </a>
                                     </div>
                                 </div>
                             </motion.div>
-                        </div>
-
-                        {/* Right Column: Executive Overview & Key Stats */}
-                        <div className="lg:col-span-7 flex flex-col justify-center space-y-6 text-left">
-
-                            {/* Identity Title */}
-                            <div>
-                                <div className="inline-flex items-center gap-2 text-xs font-semibold text-gold tracking-wider uppercase mb-2">
-                                    <span className="w-2 h-2 rounded-full bg-gold animate-ping" />
-                                    Available For Full-Time Roles
-                                </div>
-                                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold font-serif text-white leading-tight">
-                                    Sudhagar M
-                                </h3>
-                                <p className="text-base text-gray-300 font-light mt-1">
-                                    Software Engineer & ML Operations Associate
-                                </p>
-                            </div>
-
-                            {/* Key Metrics Grid */}
-                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 py-1">
-                                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/30 transition-colors">
-                                    <div className="text-2xl font-bold text-gold font-mono">8.0</div>
-                                    <div className="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">CGPA (B.Tech)</div>
-                                </div>
-                                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/30 transition-colors">
-                                    <div className="text-2xl font-bold text-gold font-mono">99%+</div>
-                                    <div className="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">ML Accuracy</div>
-                                </div>
-                                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/30 transition-colors">
-                                    <div className="text-2xl font-bold text-gold font-mono">10+</div>
-                                    <div className="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">Certificates</div>
-                                </div>
-                                <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-gold/30 transition-colors">
-                                    <div className="text-2xl font-bold text-gold font-mono">ATS</div>
-                                    <div className="text-[11px] text-gray-400 uppercase tracking-wider mt-0.5">Optimized</div>
-                                </div>
-                            </div>
-
-                            {/* Executive Summary Bullet Points */}
-                            <div className="space-y-2.5 text-sm text-gray-300">
-                                <div className="flex items-start gap-2.5">
-                                    <CheckCircle2 size={16} className="text-gold shrink-0 mt-0.5" />
-                                    <span>
-                                        <strong className="text-white font-medium">B.Tech IT Graduate:</strong> Strong foundation in algorithms, databases, data structures, and computer networks.
-                                    </span>
-                                </div>
-                                <div className="flex items-start gap-2.5">
-                                    <CheckCircle2 size={16} className="text-gold shrink-0 mt-0.5" />
-                                    <span>
-                                        <strong className="text-white font-medium">Backend & APIs:</strong> Production experience developing Python/Django services, REST APIs, and PostgreSQL integrations.
-                                    </span>
-                                </div>
-                                <div className="flex items-start gap-2.5">
-                                    <CheckCircle2 size={16} className="text-gold shrink-0 mt-0.5" />
-                                    <span>
-                                        <strong className="text-white font-medium">Amazon ML Ops Experience:</strong> Maintained high-volume dataset validation, error audits, and model evaluation standards.
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Action Buttons */}
-                            <div className="pt-2 flex flex-wrap items-center gap-4">
-                                {/* Download Button */}
-                                <a
-                                    href={resumePdfUrl}
-                                    download={downloadFileName}
-                                    className="group relative inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-gold via-yellow-400 to-gold text-black-rich font-bold rounded-xl shadow-[0_0_25px_rgba(212,175,55,0.35)] hover:shadow-[0_0_35px_rgba(212,175,55,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
-                                >
-                                    <Download size={18} className="transition-transform group-hover:-translate-y-0.5" />
-                                    <span>Download CV</span>
-                                    <span className="text-[11px] opacity-75 font-mono">PDF</span>
-                                </a>
-
-                                {/* Live In-App Preview Button */}
-                                <button
-                                    onClick={() => setIsViewerOpen(true)}
-                                    className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-gold/40 text-white font-semibold hover:bg-gold/10 hover:border-gold hover:text-gold transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-sm"
-                                >
-                                    <Eye size={18} className="text-gold" />
-                                    <span>Interactive Preview</span>
-                                </button>
-
-                                {/* Direct Fullscreen / External Link */}
-                                <a
-                                    href={resumePdfUrl}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="p-3.5 rounded-xl border border-white/10 text-gray-400 hover:text-gold hover:border-gold/30 hover:bg-white/5 transition-all duration-300"
-                                    title="Open PDF in new tab"
-                                >
-                                    <ExternalLink size={18} />
-                                </a>
-                            </div>
-
-                        </div>
-
-                    </div>
+                        )}
+                    </AnimatePresence>
                 </motion.div>
 
             </div>
 
-            {/* Interactive PDF Live Viewer Modal */}
-            <AnimatePresence>
-                {isViewerOpen && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setIsViewerOpen(false)}
-                        className="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl flex items-center justify-center p-3 sm:p-5 md:p-8"
-                    >
-                        <motion.div
-                            initial={{ scale: 0.94, opacity: 0, y: 20 }}
-                            animate={{ scale: 1, opacity: 1, y: 0 }}
-                            exit={{ scale: 0.94, opacity: 0, y: 20 }}
-                            transition={{ type: "spring", duration: 0.4 }}
-                            onClick={(e) => e.stopPropagation()}
-                            className="relative w-full max-w-5xl h-[88vh] bg-[#14161f] border border-gold/40 rounded-2xl shadow-[0_25px_70px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden"
-                        >
-                            {/* Modal Header */}
-                            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#1a1d27]/90 backdrop-blur-md">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-9 h-9 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold">
-                                        <FileText size={18} />
-                                    </div>
-                                    <div>
-                                        <h3 className="text-white font-semibold text-sm sm:text-base leading-tight">
-                                            Sudhagar M — Curriculum Vitae
-                                        </h3>
-                                        <p className="text-[11px] text-gray-400">PDF Document • Verified 2026</p>
-                                    </div>
-                                </div>
-
-                                <div className="flex items-center gap-2 sm:gap-3">
-                                    {/* Direct Download in Modal */}
-                                    <a
-                                        href={resumePdfUrl}
-                                        download={downloadFileName}
-                                        className="flex items-center gap-1.5 px-3.5 py-1.5 bg-gold text-black-rich text-xs font-bold rounded-lg hover:shadow-[0_0_15px_rgba(212,175,55,0.4)] transition-all"
-                                    >
-                                        <Download size={14} />
-                                        <span className="hidden sm:inline">Download</span>
-                                    </a>
-
-                                    {/* Open in New Window */}
-                                    <a
-                                        href={resumePdfUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="p-2 rounded-lg border border-white/10 text-gray-300 hover:text-gold hover:border-gold/40 transition-colors"
-                                        title="Open in new window"
-                                    >
-                                        <ExternalLink size={16} />
-                                    </a>
-
-                                    {/* Close Button */}
-                                    <button
-                                        onClick={() => setIsViewerOpen(false)}
-                                        className="p-2 rounded-lg border border-white/10 text-gray-300 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-                                        title="Close viewer"
-                                    >
-                                        <X size={18} />
-                                    </button>
-                                </div>
+            {/* Modern Native HTML <dialog> Modal Viewer with light-dismiss */}
+            <dialog
+                ref={dialogRef}
+                {...({ closedby: "any" } as any)}
+                aria-labelledby="dialog-resume-title"
+                className="backdrop:bg-black/80 backdrop:backdrop-blur-md bg-transparent p-3 sm:p-6 md:p-8 w-full max-w-5xl h-[90vh] max-h-[90vh] m-auto outline-none border-none overflow-hidden"
+            >
+                <div className="relative w-full h-full bg-[#111319] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                    {/* Modal Chrome Header */}
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#161822]">
+                        <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 rounded-lg bg-gold/10 border border-gold/25 flex items-center justify-center text-gold">
+                                <FileText size={16} />
                             </div>
-
-                            {/* Modal Body: Embedded PDF iframe */}
-                            <div className="flex-1 w-full bg-[#0e1015] relative">
-                                <iframe
-                                    src={`${resumePdfUrl}#view=FitH`}
-                                    title="Sudhagar M Resume"
-                                    className="w-full h-full border-none"
-                                />
-
-                                {/* Fallback notice in case browser blocks iframe preview */}
-                                <div className="absolute inset-0 -z-10 flex flex-col items-center justify-center p-6 text-center text-gray-400">
-                                    <p className="mb-4">Unable to display PDF preview directly in this browser frame.</p>
-                                    <a
-                                        href={resumePdfUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="px-5 py-2.5 bg-gold text-black-rich font-bold rounded-lg"
-                                    >
-                                        Open PDF in New Window
-                                    </a>
-                                </div>
+                            <div>
+                                <h3 id="dialog-resume-title" className="text-white font-medium text-sm sm:text-base leading-tight">
+                                    Sudhagar M &mdash; Curriculum Vitae
+                                </h3>
+                                <p className="text-[11px] text-gray-400 font-mono">PDF Document &bull; Verified 2026</p>
                             </div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                            <a
+                                href={resumePdfUrl}
+                                download={downloadFileName}
+                                className="flex items-center gap-1.5 px-3 py-1.5 bg-gold text-black-rich text-xs font-semibold rounded-lg hover:bg-gold-light transition-colors"
+                            >
+                                <Download size={13} />
+                                <span className="hidden sm:inline">Download</span>
+                            </a>
+
+                            <a
+                                href={resumePdfUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="p-2 rounded-lg border border-white/10 text-gray-400 hover:text-white transition-colors"
+                                title="Open in new window"
+                            >
+                                <ExternalLink size={15} />
+                            </a>
+
+                            <button
+                                onClick={() => setIsViewerOpen(false)}
+                                className="p-2 rounded-lg border border-white/10 text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                                title="Close modal (Esc)"
+                            >
+                                <X size={16} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Modal Body Iframe */}
+                    <div className="flex-1 w-full bg-[#0a0b0e] relative">
+                        <iframe
+                            src={`${resumePdfUrl}#view=FitH`}
+                            title="Sudhagar M Fullscreen Resume"
+                            className="w-full h-full border-none"
+                        />
+                    </div>
+                </div>
+            </dialog>
         </SectionWrapper>
     );
 };
+
