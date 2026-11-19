@@ -177,9 +177,9 @@ export const Skills = () => {
         : skills.filter((skill) => skill.category === activeTab);
 
     return (
-        <SectionWrapper id="skills" className="bg-[#181920] py-24 md:py-32 relative overflow-hidden">
+        <SectionWrapper id="skills" className="bg-[#121E1A] py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Lighting */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-gold/5 blur-[140px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#6B8E7B]/10 blur-[140px] rounded-full pointer-events-none" />
 
             <div className="w-full max-w-7xl mx-auto relative z-10">
 
@@ -190,13 +190,13 @@ export const Skills = () => {
                     viewport={{ once: true }}
                     className="text-center mb-14"
                 >
-                    <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
+                    <span className="text-[#B7C9B1] uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
                         Technical Stack
                     </span>
                     <h2 className="text-4xl md:text-6xl font-bold font-serif text-white mt-2 mb-4 tracking-tight">
-                        My <span className="text-gold">Skills</span>
+                        My <span className="text-[#F1E9D2]">Skills</span>
                     </h2>
-                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#B7C9B1] to-transparent mx-auto rounded-full" />
                 </motion.div>
 
                 {/* Interactive Category Filter Tabs */}
@@ -214,8 +214,8 @@ export const Skills = () => {
                                 onClick={() => setActiveTab(cat)}
                                 className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${
                                     isActive
-                                        ? "bg-gold text-black-rich border-gold font-bold shadow-[0_0_15px_rgba(212,175,55,0.35)]"
-                                        : "bg-[#232630]/80 text-gray-400 border-white/5 hover:border-gold/30 hover:text-white"
+                                        ? "bg-[#B7C9B1] text-[#243B35] border-[#B7C9B1] font-bold shadow-[0_0_15px_rgba(183,201,177,0.4)]"
+                                        : "bg-[#182923]/80 text-gray-300 border-white/5 hover:border-[#6B8E7B]/40 hover:text-white"
                                 }`}
                             >
                                 {cat}
@@ -241,37 +241,37 @@ export const Skills = () => {
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.3 }}
                                     whileHover={{ y: -6, scale: 1.02 }}
-                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 backdrop-blur-sm bg-[#232630]/70 shadow-lg ${
+                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 backdrop-blur-sm bg-[#182923]/80 shadow-lg ${
                                         skill.featured
-                                            ? "border border-gold/40 hover:border-gold hover:shadow-[0_0_20px_rgba(212,175,55,0.2)]"
-                                            : "border border-white/5 hover:border-gold/30 hover:bg-[#2a2e3a]"
+                                            ? "border border-[#6B8E7B]/50 hover:border-[#B7C9B1] hover:shadow-[0_0_20px_rgba(183,201,177,0.3)]"
+                                            : "border border-white/5 hover:border-[#6B8E7B]/40 hover:bg-[#1E332C]"
                                     }`}
                                 >
                                     {/* Full Highlight Star Badge */}
                                     {skill.featured && (
                                         <div
-                                            className="absolute -top-2.5 -right-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-yellow-300 via-gold to-yellow-600 text-black-rich shadow-[0_0_15px_rgba(212,175,55,0.75)] border-2 border-[#181920] z-10 transition-transform group-hover:scale-110"
+                                            className="absolute -top-2.5 -right-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-[#F1E9D2] via-[#B7C9B1] to-[#6B8E7B] text-[#243B35] shadow-[0_0_15px_rgba(183,201,177,0.6)] border-2 border-[#121E1A] z-10 transition-transform group-hover:scale-110"
                                             title="Core Highlight"
                                         >
-                                            <Star size={13} className="fill-black-rich text-black-rich" />
+                                            <Star size={13} className="fill-[#243B35] text-[#243B35]" />
                                         </div>
                                     )}
 
                                     {/* Icon Container */}
                                     <div
-                                        className="w-14 h-14 rounded-2xl flex items-center justify-center bg-black/40 border border-white/10 group-hover:scale-110 group-hover:border-gold/40 transition-all duration-300 shadow-inner"
+                                        className="w-14 h-14 rounded-2xl flex items-center justify-center bg-black/40 border border-white/10 group-hover:scale-110 group-hover:border-[#6B8E7B]/50 transition-all duration-300 shadow-inner"
                                         style={{ color: skill.color }}
                                     >
                                         <IconComponent size={30} />
                                     </div>
 
                                     {/* Skill Name */}
-                                    <h3 className="font-bold text-white text-base md:text-lg group-hover:text-gold transition-colors leading-tight">
+                                    <h3 className="font-bold text-white text-base md:text-lg group-hover:text-[#F1E9D2] transition-colors leading-tight">
                                         {skill.name}
                                     </h3>
 
                                     {/* Level / Subtitle Badge */}
-                                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/[0.04] text-gray-400 border border-white/5 group-hover:border-gold/20 font-mono tracking-wide">
+                                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/[0.04] text-gray-400 border border-white/5 group-hover:border-[#6B8E7B]/30 font-mono tracking-wide">
                                         {skill.level}
                                     </span>
                                 </motion.div>

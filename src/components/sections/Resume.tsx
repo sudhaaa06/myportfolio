@@ -53,7 +53,7 @@ export const Resume = () => {
     return (
         <SectionWrapper id="resume" className="bg-black-rich py-28 md:py-36 relative overflow-hidden flex flex-col justify-center items-center">
             {/* Ambient Background Aura */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gold/[0.06] blur-[150px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[#6B8E7B]/10 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="w-full max-w-3xl mx-auto relative z-10 px-4 sm:px-6">
 
@@ -64,39 +64,39 @@ export const Resume = () => {
                     viewport={{ once: true }}
                     className="text-center mb-12 sm:mb-14"
                 >
-                    <span className="text-gold uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
+                    <span className="text-[#B7C9B1] uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
                         Curriculum Vitae
                     </span>
                     <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold font-serif text-white tracking-tight mt-2">
-                        Summary <span className="text-gold italic font-serif">/ Synopsis</span>
+                        Summary <span className="text-[#F1E9D2] italic font-serif">/ Synopsis</span>
                     </h2>
-                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-gold to-transparent mx-auto rounded-full mt-4" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#B7C9B1] to-transparent mx-auto rounded-full mt-4" />
                 </motion.div>
 
-                {/* Minimalist Showcase Card */}
+                {/* Minimalist Showcase Card in Sage Serenity */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
                     viewport={{ once: true }}
-                    className="relative rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] via-[#0c0d12] to-[#08090d] p-8 sm:p-12 md:p-16 text-center backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.85)] hover:border-gold/30 transition-all duration-500 overflow-hidden"
+                    className="relative rounded-3xl border border-white/10 bg-gradient-to-b from-[#182923]/90 via-[#14231E] to-[#0B1512] p-8 sm:p-12 md:p-16 text-center backdrop-blur-2xl shadow-[0_20px_70px_rgba(0,0,0,0.85)] hover:border-[#6B8E7B]/50 transition-all duration-500 overflow-hidden"
                 >
                     {/* Subtle Top Accent Ribbon */}
-                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10 text-gold text-[11px] font-mono tracking-widest uppercase mb-8">
-                        <Sparkles size={12} className="text-gold" />
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/[0.03] border border-white/10 text-[#B7C9B1] text-[11px] font-mono tracking-widest uppercase mb-8">
+                        <Sparkles size={12} className="text-[#B7C9B1]" />
                         <span>Professional Synopsis</span>
                     </div>
 
                     {/* Name & Title */}
-                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold font-serif text-white tracking-tight leading-tight">
+                    <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold font-serif text-[#F1E9D2] tracking-tight leading-tight">
                         Sudhagar M
                     </h3>
 
-                    <p className="text-sm sm:text-base text-gray-400 font-light mt-3 max-w-md mx-auto">
+                    <p className="text-sm sm:text-base text-gray-300 font-light mt-3 max-w-md mx-auto">
                         Software Engineer &bull; ML Operations Associate
                     </p>
 
-                    <div className="h-px w-20 bg-gradient-to-r from-transparent via-gold/50 to-transparent mx-auto my-8" />
+                    <div className="h-px w-20 bg-gradient-to-r from-transparent via-[#B7C9B1]/50 to-transparent mx-auto my-8" />
 
                     {/* Resume Download & View Options Only */}
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
@@ -104,7 +104,7 @@ export const Resume = () => {
                         <a
                             href={resumePdfUrl}
                             download={downloadFileName}
-                            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-gold via-yellow-400 to-gold text-black-rich font-bold text-sm rounded-2xl shadow-[0_0_25px_rgba(212,175,55,0.25)] hover:shadow-[0_0_35px_rgba(212,175,55,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                            className="group w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-[#B7C9B1] via-[#F1E9D2] to-[#B7C9B1] text-[#243B35] font-bold text-sm rounded-2xl shadow-[0_0_25px_rgba(183,201,177,0.35)] hover:shadow-[0_0_35px_rgba(241,233,210,0.6)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                         >
                             <Download size={18} className="transition-transform group-hover:-translate-y-0.5" />
                             <span>Download Resume</span>
@@ -114,9 +114,9 @@ export const Resume = () => {
                         {/* View Option */}
                         <button
                             onClick={() => setIsViewerOpen(true)}
-                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border border-white/15 bg-white/[0.03] text-white font-semibold text-sm hover:border-gold/50 hover:bg-gold/10 hover:text-gold transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-sm"
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl border border-white/15 bg-white/[0.03] text-white font-semibold text-sm hover:border-[#B7C9B1]/60 hover:bg-[#243B35]/40 hover:text-[#F1E9D2] transition-all duration-300 cursor-pointer shadow-lg backdrop-blur-sm"
                         >
-                            <Eye size={18} className="text-gold" />
+                            <Eye size={18} className="text-[#B7C9B1]" />
                             <span>View Resume</span>
                         </button>
 
@@ -125,7 +125,7 @@ export const Resume = () => {
                             href={resumePdfUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="p-4 rounded-2xl border border-white/10 text-gray-400 hover:text-gold hover:border-gold/30 hover:bg-white/5 transition-all duration-300 hidden sm:inline-flex"
+                            className="p-4 rounded-2xl border border-white/10 text-gray-400 hover:text-[#F1E9D2] hover:border-[#6B8E7B]/40 hover:bg-white/5 transition-all duration-300 hidden sm:inline-flex"
                             title="Open in new window"
                         >
                             <ExternalLink size={18} />
@@ -142,11 +142,11 @@ export const Resume = () => {
                 aria-labelledby="dialog-resume-title"
                 className="backdrop:bg-black/80 backdrop:backdrop-blur-md bg-transparent p-3 sm:p-6 md:p-8 w-full max-w-5xl h-[90vh] max-h-[90vh] m-auto outline-none border-none overflow-hidden"
             >
-                <div className="relative w-full h-full bg-[#111319] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
+                <div className="relative w-full h-full bg-[#121E1A] border border-white/15 rounded-2xl shadow-2xl flex flex-col overflow-hidden">
                     {/* Modal Chrome Header */}
-                    <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#161822]">
+                    <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#182923]">
                         <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-lg bg-gold/10 border border-gold/25 flex items-center justify-center text-gold">
+                            <div className="w-8 h-8 rounded-lg bg-[#243B35] border border-[#6B8E7B]/40 flex items-center justify-center text-[#B7C9B1]">
                                 <FileText size={16} />
                             </div>
                             <div>
@@ -161,7 +161,7 @@ export const Resume = () => {
                             <a
                                 href={resumePdfUrl}
                                 download={downloadFileName}
-                                className="flex items-center gap-1.5 px-3 py-1.5 bg-gold text-black-rich text-xs font-semibold rounded-lg hover:bg-gold-light transition-colors"
+                                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#B7C9B1] text-[#243B35] text-xs font-semibold rounded-lg hover:bg-[#F1E9D2] transition-colors"
                             >
                                 <Download size={13} />
                                 <span className="hidden sm:inline">Download</span>
@@ -188,7 +188,7 @@ export const Resume = () => {
                     </div>
 
                     {/* Modal Body Iframe */}
-                    <div className="flex-1 w-full bg-[#0a0b0e] relative">
+                    <div className="flex-1 w-full bg-[#0B1311] relative">
                         <iframe
                             src={`${resumePdfUrl}#view=FitH`}
                             title="Sudhagar M Fullscreen Resume"
@@ -200,5 +200,3 @@ export const Resume = () => {
         </SectionWrapper>
     );
 };
-
-

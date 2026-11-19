@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Navbar } from "./components/layout/Navbar";
 import { Hero } from "./components/sections/Hero";
 import { About } from "./components/sections/About";
@@ -10,25 +10,18 @@ import { Resume } from "./components/sections/Resume";
 import { Contact } from "./components/sections/Contact";
 import { CustomCursor } from "./components/ui/CustomCursor";
 import { ScrollProgress } from "./components/ui/ScrollProgress";
+import { InfinityLoader } from "./components/ui/InfinityLoader";
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading for a smoother experience
-    const timer = setTimeout(() => setLoading(false), 1000);
-    return () => clearTimeout(timer);
-  }, []);
+  const [hasEntered, setHasEntered] = useState(false);
 
   return (
-    <div className="bg-black-rich min-h-screen text-white selection:bg-gold selection:text-black-rich">
+    <div className="bg-black-rich min-h-screen text-white selection:bg-[#B7C9B1] selection:text-[#243B35]">
       <CustomCursor />
       <ScrollProgress />
 
-      {loading ? (
-        <div className="fixed inset-0 flex items-center justify-center bg-black-rich z-50">
-          <div className="w-16 h-16 border-4 border-gold border-t-transparent rounded-full animate-spin" />
-        </div>
+      {!hasEntered ? (
+        <InfinityLoader onEnter={() => setHasEntered(true)} />
       ) : (
         <>
           <Navbar />
