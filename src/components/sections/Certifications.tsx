@@ -12,6 +12,12 @@ interface Certificate {
 
 const certificates: Certificate[] = [
     {
+        title: "Java Full Stack",
+        issuer: "SYNKOC IT Services • AICTE",
+        certificateUrl: "/certificates/synkoc_java_full_stack.png",
+        starBadge: true,
+    },
+    {
         title: "DSA",
         issuer: "Amazon",
         certificateUrl: "/certificates/amazon_dsa.png",
@@ -107,7 +113,7 @@ export const Certifications = () => {
                                 onClick={() => {
                                     if (hasAttachment) setSelectedCert(cert);
                                 }}
-                                className={`group relative flex items-center justify-between gap-4 px-6 py-5 rounded-2xl bg-[#182923]/80 hover:bg-[#1E332C] border transition-all duration-300 shadow-lg backdrop-blur-sm cursor-pointer border-[#6B8E7B]/40 hover:border-[#B7C9B1] hover:shadow-[0_0_25px_rgba(183,201,177,0.3)]`}
+                                className="group relative flex items-center justify-between gap-4 px-6 py-5 rounded-2xl bg-[#182923]/80 hover:bg-[#1E332C] border transition-all duration-300 shadow-lg backdrop-blur-sm cursor-pointer border-[#6B8E7B]/40 hover:border-[#B7C9B1] hover:shadow-[0_0_25px_rgba(183,201,177,0.3)]"
                             >
                                 {/* Corner Star Badge */}
                                 {cert.starBadge && (
@@ -145,14 +151,14 @@ export const Certifications = () => {
 
             </div>
 
-            {/* Certificate Preview Modal */}
+            {/* Certificate Preview Modal - Photo View */}
             <AnimatePresence>
                 {selectedCert && selectedCert.certificateUrl && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-6 bg-black/85 backdrop-blur-md"
+                        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md"
                         onClick={() => setSelectedCert(null)}
                     >
                         <motion.div
@@ -160,7 +166,7 @@ export const Certifications = () => {
                             animate={{ scale: 1, opacity: 1, y: 0 }}
                             exit={{ scale: 0.9, opacity: 0, y: 20 }}
                             transition={{ duration: 0.25 }}
-                            className="relative max-w-3xl w-full bg-[#121E1A] border border-[#6B8E7B]/50 rounded-3xl p-6 shadow-[0_0_50px_rgba(107,142,123,0.3)] overflow-hidden"
+                            className="relative max-w-4xl w-full bg-[#121E1A] border border-[#6B8E7B]/50 rounded-3xl p-5 sm:p-6 shadow-[0_0_50px_rgba(107,142,123,0.3)] overflow-hidden"
                             onClick={(e) => e.stopPropagation()}
                         >
                             {/* Modal Header */}
@@ -179,13 +185,13 @@ export const Certifications = () => {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="p-2 text-gray-400 hover:text-[#F1E9D2] hover:bg-white/5 rounded-full transition-colors"
-                                        title="Open in new tab"
+                                        title="Open full photo in new tab"
                                     >
                                         <ExternalLink size={20} />
                                     </a>
                                     <button
                                         onClick={() => setSelectedCert(null)}
-                                        className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-colors"
+                                        className="p-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-full transition-colors cursor-pointer"
                                         aria-label="Close modal"
                                     >
                                         <X size={20} />
@@ -193,25 +199,28 @@ export const Certifications = () => {
                                 </div>
                             </div>
 
-                            {/* Certificate Image */}
-                            <div className="rounded-2xl overflow-hidden bg-black/50 border border-white/10 shadow-inner flex items-center justify-center">
+                            {/* Certificate Image - High Clarity Photo View */}
+                            <div className="rounded-2xl overflow-hidden bg-black/60 border border-white/10 shadow-inner flex items-center justify-center p-1 sm:p-2">
                                 <img
                                     src={selectedCert.certificateUrl}
                                     alt={`${selectedCert.title} Certificate`}
-                                    className="w-full h-auto max-h-[70vh] object-contain rounded-xl"
+                                    className="w-full h-auto max-h-[75vh] object-contain rounded-xl shadow-lg"
                                 />
                             </div>
 
                             {/* Modal Footer */}
-                            <div className="mt-4 flex justify-end">
+                            <div className="mt-4 flex items-center justify-between">
+                                <span className="text-[11px] text-gray-400 font-mono hidden sm:inline">
+                                    Photo Preview &bull; Click to expand or open in new tab
+                                </span>
                                 <a
                                     href={selectedCert.certificateUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#B7C9B1] text-[#243B35] text-xs font-bold uppercase tracking-wider hover:bg-[#F1E9D2] transition-colors shadow-lg"
+                                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#B7C9B1] text-[#243B35] text-xs font-bold uppercase tracking-wider hover:bg-[#F1E9D2] transition-colors shadow-lg ml-auto cursor-pointer"
                                 >
                                     <ExternalLink size={14} />
-                                    Open Full Certificate
+                                    Open Full Photo
                                 </a>
                             </div>
                         </motion.div>
