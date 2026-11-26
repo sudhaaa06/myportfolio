@@ -1,24 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-gold: #B7C9B1;
-  --color-gold-light: #F1E9D2;
-  --color-charcoal: #162722;
-  --color-black-rich: #0B1311;
+:root {
+  --bg-primary: #FAFAFA;
+  --bg-surface: #FFFFFF;
+  --text-primary: #18181B;
+  --text-muted: #52525B;
+  --border: #E4E4E7;
+  --accent: #059669;
+  --accent-hover: #047857;
+  --accent-text: #FFFFFF;
+}
 
-  --color-sage-dark: #243B35;
-  --color-sage: #6B8E7B;
-  --color-sage-light: #B7C9B1;
-  --color-cream: #F1E9D2;
+@theme {
+  --color-bg-primary: #FAFAFA;
+  --color-bg-surface: #FFFFFF;
+  --color-text-primary: #18181B;
+  --color-text-muted: #52525B;
+  --color-border-custom: #E4E4E7;
+  --color-accent: #059669;
+  --color-accent-hover: #047857;
+  --color-accent-text: #FFFFFF;
+
+  --color-gold: #059669;
+  --color-gold-light: #10B981;
+  --color-charcoal: #FAFAFA;
+  --color-black-rich: #FAFAFA;
 
   --font-serif: 'Times New Roman', Times, 'Tinos', Georgia, serif;
   --font-sans: 'Times New Roman', Times, 'Tinos', Georgia, serif;
   --font-display: 'Times New Roman', Times, 'Tinos', Georgia, serif;
   --font-outfit: 'Times New Roman', Times, 'Tinos', Georgia, serif;
 
-  --color-primary: #B7C9B1;
-  --color-secondary: #243B35;
+  --color-primary: #059669;
+  --color-secondary: #047857;
 
   --animate-spin-slow: spin 10s linear infinite;
   --animate-typing: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
@@ -26,21 +41,23 @@
 
 body {
   font-family: 'Times New Roman', Times, 'Tinos', Georgia, serif;
-  @apply bg-black-rich text-white overflow-x-hidden antialiased;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  @apply overflow-x-hidden antialiased;
 }
 
 ::selection {
-  background-color: rgba(107, 142, 123, 0.45);
-  color: #F1E9D2;
+  background-color: rgba(5, 150, 105, 0.2);
+  color: #059669;
 }
 
 /* Glassmorphism utilities */
 .glass {
-  @apply backdrop-blur-lg bg-white/5 border border-white/10;
+  @apply backdrop-blur-lg bg-white/85 border border-[#E4E4E7];
 }
 
 .glass-hover {
-  @apply hover:bg-white/10 transition-colors duration-300;
+  @apply hover:bg-white transition-colors duration-300;
 }
 
 @keyframes blob {

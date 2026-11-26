@@ -22,8 +22,9 @@ export const Navbar = () => {
 
     return (
         <nav
-            className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-black-rich/85 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-                }`}
+            className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+                scrolled ? "bg-white/90 backdrop-blur-md border-b border-[#E4E4E7] shadow-sm" : "bg-transparent"
+            }`}
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Brand name removed */}
@@ -35,14 +36,14 @@ export const Navbar = () => {
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-gray-300 hover:text-[#F1E9D2] transition-colors text-sm uppercase tracking-widest font-medium"
+                            className="text-[#52525B] hover:text-[#059669] transition-colors text-sm uppercase tracking-widest font-medium"
                         >
                             {link.name}
                         </a>
                     ))}
                     <a
                         href="#contact"
-                        className="px-6 py-2 rounded-full border border-[#B7C9B1]/60 text-[#F1E9D2] hover:bg-[#B7C9B1] hover:text-[#243B35] transition-all duration-300 text-sm font-bold uppercase tracking-wider hover:shadow-[0_0_20px_rgba(183,201,177,0.35)]"
+                        className="px-6 py-2 rounded-full border border-[#059669] text-[#059669] hover:bg-[#059669] hover:text-white transition-all duration-300 text-sm font-bold uppercase tracking-wider hover:shadow-[0_0_15px_rgba(5,150,105,0.25)]"
                     >
                         Hire Me
                     </a>
@@ -50,7 +51,11 @@ export const Navbar = () => {
 
                 {/* Mobile Menu Button */}
                 <div className="md:hidden">
-                    <button onClick={() => setIsOpen(!isOpen)} className="text-white hover:text-[#F1E9D2] transition-colors">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="text-[#18181B] hover:text-[#059669] transition-colors p-1"
+                        aria-label="Toggle menu"
+                    >
                         {isOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                 </div>
@@ -58,17 +63,24 @@ export const Navbar = () => {
 
             {/* Mobile Menu Overlay */}
             {isOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-[#121E1A] border-b border-white/10 py-6 px-6 flex flex-col space-y-4 shadow-2xl">
+                <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-[#E4E4E7] py-6 px-6 flex flex-col space-y-4 shadow-xl">
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
                             href={link.href}
-                            className="text-lg text-gray-300 hover:text-[#F1E9D2] font-serif"
+                            className="text-lg text-[#52525B] hover:text-[#059669] font-serif transition-colors"
                             onClick={() => setIsOpen(false)}
                         >
                             {link.name}
                         </a>
                     ))}
+                    <a
+                        href="#contact"
+                        onClick={() => setIsOpen(false)}
+                        className="inline-block text-center px-6 py-2.5 rounded-full bg-[#059669] text-white font-bold uppercase text-sm tracking-wider shadow-sm"
+                    >
+                        Hire Me
+                    </a>
                 </div>
             )}
         </nav>

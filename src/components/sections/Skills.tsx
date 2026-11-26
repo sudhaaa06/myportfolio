@@ -39,14 +39,14 @@ const skills: Skill[] = [
         name: "JavaScript",
         category: "Languages",
         icon: SiJavascript,
-        color: "#F7DF1E",
+        color: "#E5A000",
         level: "ES6+ & Modern",
     },
     {
         name: "SQL",
         category: "Languages",
         icon: Database,
-        color: "#F29111",
+        color: "#E28743",
         level: "Queries & Joins",
     },
 
@@ -55,7 +55,7 @@ const skills: Skill[] = [
         name: "Django",
         category: "Backend & Web",
         icon: SiDjango,
-        color: "#44B78B",
+        color: "#059669",
         level: "Backend & ORM",
         featured: true,
     },
@@ -63,7 +63,7 @@ const skills: Skill[] = [
         name: "REST APIs",
         category: "Backend & Web",
         icon: Server,
-        color: "#10B981",
+        color: "#059669",
         level: "API Architecture",
     },
     {
@@ -86,14 +86,14 @@ const skills: Skill[] = [
         name: "PostgreSQL",
         category: "Databases",
         icon: SiPostgresql,
-        color: "#4169E1",
+        color: "#336791",
         level: "Relational DB",
     },
     {
         name: "RDBMS Schema",
         category: "Databases",
         icon: Database,
-        color: "#E38C00",
+        color: "#D97706",
         level: "Design & Optimization",
     },
 
@@ -102,21 +102,21 @@ const skills: Skill[] = [
         name: "NumPy",
         category: "Data & ML",
         icon: SiNumpy,
-        color: "#4DABCF",
+        color: "#013243",
         level: "Array Computing",
     },
     {
         name: "NLTK (NLP)",
         category: "Data & ML",
         icon: Brain,
-        color: "#FFD700",
+        color: "#B45309",
         level: "Natural Language",
     },
     {
         name: "ML Data Operations",
         category: "Data & ML",
         icon: ShieldCheck,
-        color: "#FF9900",
+        color: "#059669",
         level: "Validation & 99%+ QA",
     },
 
@@ -133,7 +133,7 @@ const skills: Skill[] = [
         name: "Git & GitHub",
         category: "Tools & Platforms",
         icon: SiGithub,
-        color: "#F05032",
+        color: "#18181B",
         level: "Version Control",
         featured: true,
     },
@@ -141,7 +141,7 @@ const skills: Skill[] = [
         name: "Linux",
         category: "Tools & Platforms",
         icon: SiLinux,
-        color: "#FCC624",
+        color: "#D97706",
         level: "OS & Shell Scripting",
     },
     {
@@ -155,7 +155,7 @@ const skills: Skill[] = [
         name: "Testing & Debugging",
         category: "Tools & Platforms",
         icon: CheckCircle2,
-        color: "#22C55E",
+        color: "#059669",
         level: "Unit Tests & QA",
     },
 ];
@@ -177,9 +177,9 @@ export const Skills = () => {
         : skills.filter((skill) => skill.category === activeTab);
 
     return (
-        <SectionWrapper id="skills" className="bg-[#121E1A] py-24 md:py-32 relative overflow-hidden">
+        <SectionWrapper id="skills" className="bg-[#FAFAFA] py-24 md:py-32 relative overflow-hidden">
             {/* Subtle Ambient Lighting */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#6B8E7B]/10 blur-[140px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-[#059669]/5 blur-[140px] rounded-full pointer-events-none" />
 
             <div className="w-full max-w-7xl mx-auto relative z-10">
 
@@ -190,13 +190,13 @@ export const Skills = () => {
                     viewport={{ once: true }}
                     className="text-center mb-14"
                 >
-                    <span className="text-[#B7C9B1] uppercase tracking-[0.25em] text-xs md:text-sm font-semibold">
+                    <span className="text-[#059669] uppercase tracking-[0.25em] text-xs md:text-sm font-bold">
                         Technical Stack
                     </span>
-                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-white mt-2 mb-4 tracking-tight">
-                        My <span className="text-[#F1E9D2]">Skills</span>
+                    <h2 className="text-4xl md:text-6xl font-bold font-serif text-[#18181B] mt-2 mb-4 tracking-tight">
+                        My <span className="text-[#059669]">Skills</span>
                     </h2>
-                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#B7C9B1] to-transparent mx-auto rounded-full" />
+                    <div className="w-24 h-[2px] bg-gradient-to-r from-transparent via-[#059669] to-transparent mx-auto rounded-full" />
                 </motion.div>
 
                 {/* Interactive Category Filter Tabs */}
@@ -212,10 +212,10 @@ export const Skills = () => {
                             <button
                                 key={cat}
                                 onClick={() => setActiveTab(cat)}
-                                className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border ${
+                                className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 border cursor-pointer ${
                                     isActive
-                                        ? "bg-[#B7C9B1] text-[#243B35] border-[#B7C9B1] font-bold shadow-[0_0_15px_rgba(183,201,177,0.4)]"
-                                        : "bg-[#182923]/80 text-gray-300 border-white/5 hover:border-[#6B8E7B]/40 hover:text-white"
+                                        ? "bg-[#059669] text-white border-[#059669] font-bold shadow-[0_4px_14px_rgba(5,150,105,0.3)]"
+                                        : "bg-white text-[#52525B] border-[#E4E4E7] hover:border-[#059669]/50 hover:text-[#18181B] shadow-sm"
                                 }`}
                             >
                                 {cat}
@@ -241,37 +241,37 @@ export const Skills = () => {
                                     exit={{ opacity: 0, scale: 0.9 }}
                                     transition={{ duration: 0.3 }}
                                     whileHover={{ y: -6, scale: 1.02 }}
-                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 backdrop-blur-sm bg-[#182923]/80 shadow-lg ${
+                                    className={`relative p-6 rounded-2xl flex flex-col items-center justify-center text-center gap-3.5 group transition-all duration-300 bg-white shadow-sm hover:shadow-md ${
                                         skill.featured
-                                            ? "border border-[#6B8E7B]/50 hover:border-[#B7C9B1] hover:shadow-[0_0_20px_rgba(183,201,177,0.3)]"
-                                            : "border border-white/5 hover:border-[#6B8E7B]/40 hover:bg-[#1E332C]"
+                                            ? "border border-[#059669]/40 hover:border-[#059669] hover:shadow-[0_8px_25px_rgba(5,150,105,0.18)]"
+                                            : "border border-[#E4E4E7] hover:border-[#059669]/40 hover:bg-white"
                                     }`}
                                 >
                                     {/* Full Highlight Star Badge */}
                                     {skill.featured && (
                                         <div
-                                            className="absolute -top-2.5 -right-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-[#F1E9D2] via-[#B7C9B1] to-[#6B8E7B] text-[#243B35] shadow-[0_0_15px_rgba(183,201,177,0.6)] border-2 border-[#121E1A] z-10 transition-transform group-hover:scale-110"
+                                            className="absolute -top-2.5 -right-2.5 flex items-center justify-center w-7 h-7 rounded-full bg-[#059669] text-white shadow-md border-2 border-white z-10 transition-transform group-hover:scale-110"
                                             title="Core Highlight"
                                         >
-                                            <Star size={13} className="fill-[#243B35] text-[#243B35]" />
+                                            <Star size={13} className="fill-white text-white" />
                                         </div>
                                     )}
 
                                     {/* Icon Container */}
                                     <div
-                                        className="w-14 h-14 rounded-2xl flex items-center justify-center bg-black/40 border border-white/10 group-hover:scale-110 group-hover:border-[#6B8E7B]/50 transition-all duration-300 shadow-inner"
+                                        className="w-14 h-14 rounded-2xl flex items-center justify-center bg-[#FAFAFA] border border-[#E4E4E7] group-hover:scale-110 group-hover:border-[#059669]/40 transition-all duration-300 shadow-inner"
                                         style={{ color: skill.color }}
                                     >
                                         <IconComponent size={30} />
                                     </div>
 
                                     {/* Skill Name */}
-                                    <h3 className="font-bold text-white text-base md:text-lg group-hover:text-[#F1E9D2] transition-colors leading-tight">
+                                    <h3 className="font-bold text-[#18181B] text-base md:text-lg group-hover:text-[#059669] transition-colors leading-tight">
                                         {skill.name}
                                     </h3>
 
                                     {/* Level / Subtitle Badge */}
-                                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-white/[0.04] text-gray-400 border border-white/5 group-hover:border-[#6B8E7B]/30 font-mono tracking-wide">
+                                    <span className="text-[11px] px-2.5 py-0.5 rounded-full bg-[#FAFAFA] text-[#52525B] border border-[#E4E4E7] group-hover:border-[#059669]/30 font-mono tracking-wide">
                                         {skill.level}
                                     </span>
                                 </motion.div>

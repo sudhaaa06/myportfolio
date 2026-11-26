@@ -16,7 +16,7 @@ function App() {
   const [hasEntered, setHasEntered] = useState(false);
 
   return (
-    <div className="bg-black-rich min-h-screen text-white selection:bg-[#B7C9B1] selection:text-[#243B35]">
+    <div className="bg-[#FAFAFA] min-h-screen text-[#18181B] selection:bg-[#059669]/20 selection:text-[#059669]">
       <CustomCursor />
       <ScrollProgress />
 

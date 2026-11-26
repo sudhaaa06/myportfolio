@@ -55,11 +55,11 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                     transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     onClick={handleEnter}
                     onTouchStart={handleEnter}
-                    className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#0B1311] cursor-pointer select-none overflow-hidden px-4"
+                    className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#FAFAFA] cursor-pointer select-none overflow-hidden px-4"
                 >
                     {/* Ambient Background Glows */}
-                    <div className="absolute w-[500px] h-[300px] bg-[#6B8E7B]/20 blur-[130px] rounded-full pointer-events-none -z-10 animate-pulse" />
-                    <div className="absolute w-[300px] h-[300px] bg-[#B7C9B1]/10 blur-[100px] rounded-full pointer-events-none -z-10" />
+                    <div className="absolute w-[500px] h-[300px] bg-[#059669]/10 blur-[130px] rounded-full pointer-events-none -z-10 animate-pulse" />
+                    <div className="absolute w-[300px] h-[300px] bg-[#10B981]/10 blur-[100px] rounded-full pointer-events-none -z-10" />
 
                     {/* Central Infinity & Brand Container */}
                     <div className="relative flex flex-col items-center text-center">
@@ -77,15 +77,14 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                             >
                                 <defs>
                                     <linearGradient id="infinityGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stopColor="#F1E9D2" />
-                                        <stop offset="35%" stopColor="#B7C9B1" />
-                                        <stop offset="70%" stopColor="#6B8E7B" />
-                                        <stop offset="100%" stopColor="#F1E9D2" />
+                                        <stop offset="0%" stopColor="#059669" />
+                                        <stop offset="50%" stopColor="#10B981" />
+                                        <stop offset="100%" stopColor="#047857" />
                                     </linearGradient>
 
                                     <filter id="infinityGlow" x="-50%" y="-50%" width="200%" height="200%">
-                                        <feGaussianBlur stdDeviation="8" result="blur1" />
-                                        <feGaussianBlur stdDeviation="16" result="blur2" />
+                                        <feGaussianBlur stdDeviation="6" result="blur1" />
+                                        <feGaussianBlur stdDeviation="12" result="blur2" />
                                         <feMerge>
                                             <feMergeNode in="blur2" />
                                             <feMergeNode in="blur1" />
@@ -98,7 +97,7 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                                 <path
                                     d="M 150,75 C 105,25 45,25 45,75 C 45,125 105,125 150,75 C 195,25 255,25 255,75 C 255,125 195,125 150,75 Z"
                                     fill="none"
-                                    stroke="rgba(107, 142, 123, 0.2)"
+                                    stroke="#E4E4E7"
                                     strokeWidth="6"
                                     strokeLinecap="round"
                                 />
@@ -126,7 +125,7 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                                 <motion.path
                                     d="M 150,75 C 105,25 45,25 45,75 C 45,125 105,125 150,75 C 195,25 255,25 255,75 C 255,125 195,125 150,75 Z"
                                     fill="none"
-                                    stroke="#F1E9D2"
+                                    stroke="#059669"
                                     strokeWidth="2.5"
                                     strokeLinecap="round"
                                     initial={{ pathOffset: 0, pathLength: 0.15 }}
@@ -149,10 +148,10 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                             transition={{ delay: 0.3, duration: 0.6 }}
                             className="flex flex-col items-center"
                         >
-                            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.25em] text-[#F1E9D2] uppercase mb-2 drop-shadow-[0_2px_12px_rgba(241,233,210,0.3)]">
+                            <h1 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-[0.25em] text-[#18181B] uppercase mb-2">
                                 SUDHAGAR M
                             </h1>
-                            <p className="font-sans text-xs sm:text-sm text-gray-400 tracking-[0.2em] uppercase font-light">
+                            <p className="font-sans text-xs sm:text-sm text-[#52525B] tracking-[0.2em] uppercase font-medium">
                                 Software Engineer &bull; Portfolio
                             </p>
                         </motion.div>
@@ -165,13 +164,13 @@ export const InfinityLoader = ({ onEnter }: InfinityLoaderProps) => {
                                 transition={{ duration: 0.4 }}
                                 className="mt-8 flex flex-col items-center gap-3"
                             >
-                                <div className="group relative flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#243B35] via-[#1E302A] to-[#243B35] border border-[#6B8E7B]/60 text-[#F1E9D2] shadow-[0_0_25px_rgba(107,142,123,0.35),inset_0_1px_1px_rgba(255,255,255,0.2)] hover:border-[#B7C9B1] hover:shadow-[0_0_35px_rgba(183,201,177,0.5)] transition-all duration-300 transform active:scale-95">
-                                    <Sparkles size={15} className="text-[#B7C9B1] animate-pulse" />
+                                <div className="group relative flex items-center gap-2.5 px-6 py-3 rounded-full bg-[#059669] hover:bg-[#047857] text-white shadow-[0_4px_16px_rgba(5,150,105,0.35)] transition-all duration-300 transform active:scale-95">
+                                    <Sparkles size={15} className="text-white animate-pulse" />
                                     <span className="font-serif text-xs sm:text-sm font-bold tracking-widest uppercase">
                                         Touch to Enter
                                     </span>
                                 </div>
-                                <span className="text-[10px] text-gray-500 font-mono tracking-widest uppercase">
+                                <span className="text-[10px] text-[#52525B] font-mono tracking-widest uppercase">
                                     Tap anywhere to enter
                                 </span>
                             </motion.div>
