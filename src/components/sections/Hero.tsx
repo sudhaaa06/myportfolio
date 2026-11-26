@@ -1,6 +1,6 @@
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
-import { SiFacebook, SiX, SiLinkedin, SiInstagram } from 'react-icons/si';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub, FaInstagram } from 'react-icons/fa';
 import { Link } from 'react-scroll';
 
 interface SocialItem {
@@ -8,37 +8,44 @@ interface SocialItem {
     href: string;
     icon: React.ReactNode;
     colorClass: string;
-    hoverStyle: string;
+    hoverGlow: string;
 }
 
 const socialLinks: SocialItem[] = [
     {
         name: "Facebook",
         href: "https://www.facebook.com/profile.php?id=100051049081436",
-        icon: <SiFacebook size={20} />,
+        icon: <FaFacebookF size={18} />,
         colorClass: "text-[#1877F2]",
-        hoverStyle: "hover:bg-[#1877F2]/10 hover:shadow-md",
+        hoverGlow: "hover:drop-shadow-[0_0_12px_rgba(24,119,242,0.8)]",
     },
     {
-        name: "X (Twitter)",
+        name: "Twitter",
         href: "https://x.com/SUDHAGAR2506",
-        icon: <SiX size={18} />,
-        colorClass: "text-[#18181B]",
-        hoverStyle: "hover:bg-zinc-200 hover:shadow-md",
+        icon: <FaTwitter size={19} />,
+        colorClass: "text-[#1DA1F2]",
+        hoverGlow: "hover:drop-shadow-[0_0_12px_rgba(29,161,242,0.8)]",
     },
     {
         name: "LinkedIn",
         href: "https://www.linkedin.com/in/sudhagar-m-323117333/",
-        icon: <SiLinkedin size={20} />,
+        icon: <FaLinkedinIn size={19} />,
         colorClass: "text-[#0A66C2]",
-        hoverStyle: "hover:bg-[#0A66C2]/10 hover:shadow-md",
+        hoverGlow: "hover:drop-shadow-[0_0_12px_rgba(10,102,194,0.8)]",
+    },
+    {
+        name: "GitHub",
+        href: "https://github.com/sudhaaa06",
+        icon: <FaGithub size={19} />,
+        colorClass: "text-white",
+        hoverGlow: "hover:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]",
     },
     {
         name: "Instagram",
         href: "https://www.instagram.com/sudhagarrr_/",
-        icon: <SiInstagram size={20} style={{ fill: "url(#instagram-gradient)" }} className="text-[#E4405F]" />,
+        icon: <FaInstagram size={19} style={{ fill: "url(#instagram-gradient)" }} className="text-[#E4405F]" />,
         colorClass: "text-[#E4405F]",
-        hoverStyle: "hover:bg-[#E4405F]/10 hover:shadow-md",
+        hoverGlow: "hover:drop-shadow-[0_0_12px_rgba(228,64,95,0.8)]",
     },
 ];
 
@@ -70,7 +77,7 @@ export const Hero = () => {
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     className="flex flex-col items-center gap-5 mb-8"
                 >
-                    <div className="relative w-[260px] sm:w-[300px] md:w-[340px] aspect-[776/1024] group transition-all duration-500">
+                    <div className="relative w-[280px] sm:w-[320px] md:w-[350px] aspect-square group transition-all duration-500">
                         {/* Ambient Back Glow */}
                         <div className="absolute -inset-6 bg-[#059669]/15 blur-[60px] rounded-full opacity-70 pointer-events-none" />
 
@@ -81,8 +88,8 @@ export const Hero = () => {
                         />
                     </div>
 
-                    {/* Social Pill */}
-                    <div className="flex items-center gap-3 bg-white p-2 sm:p-2.5 rounded-full border border-[#E4E4E7] shadow-[0_10px_25px_rgba(0,0,0,0.06)]">
+                    {/* Social Bar - Transparent Logos with Brand Colors */}
+                    <div className="flex items-center gap-6 sm:gap-7 bg-[#18181B] px-6 sm:px-7 py-3 rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.18)]">
                         {socialLinks.map((item) => (
                             <a
                                 key={item.name}
@@ -90,7 +97,7 @@ export const Hero = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={item.name}
-                                className={`w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#FAFAFA] border border-[#E4E4E7] shadow-sm transition-all duration-300 transform hover:-translate-y-1 hover:scale-110 active:translate-y-0.5 flex items-center justify-center ${item.colorClass} ${item.hoverStyle}`}
+                                className={`${item.colorClass} ${item.hoverGlow} transition-all duration-300 transform hover:-translate-y-1 hover:scale-125 flex items-center justify-center p-1`}
                             >
                                 {item.icon}
                             </a>
@@ -163,6 +170,7 @@ export const Hero = () => {
                 </motion.div>
 
             </div>
+
 
             {/* Background Subtle Gradient */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#059669]/5 blur-[160px] rounded-full pointer-events-none" />

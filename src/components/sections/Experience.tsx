@@ -13,8 +13,18 @@ interface ExperienceItem {
 const experiences: ExperienceItem[] = [
     {
         year: "2026",
+        role: "Java Developer Intern",
+        company: "SYNKOC IT Services",
+        duration: "Oct 2026 – Nov 2026",
+        description:
+            "Completed the Core Tier of the Java virtual internship via the AICTE Internship Portal with SYNKOC IT Services, Bangalore. Independently developed and deployed the capstone project 'RentMate – A Web-Based Peer-to-Peer Rental System', implementing modular full-stack components, database workflows, and practical applied competence evaluated and approved by SYNKOC instructors.",
+        skills: ["Java Developer Intern", "RentMate (P2P Rental)", "Core Java", "Web Architecture", "Database Management", "AICTE Certified"],
+    },
+    {
+        year: "2026",
         role: "Associate, ML Data Operations",
-        duration: "Jun 2026 – Present",
+        company: "Online Linked-in",
+        duration: "Aug 2025 – Oct 2026",
         description:
             "Validate and manage large-scale datasets used in machine learning model training and evaluation, ensuring rigorous adherence to data quality standards. Conduct systematic root-cause analysis and comprehensive quality audits to eliminate downstream errors, maintaining a 99%+ accuracy benchmark across high-volume ML workflows.",
         skills: ["Machine Learning", "Data Operations", "Quality Audits", "Root-Cause Analysis", "Data Validation"],
@@ -22,6 +32,7 @@ const experiences: ExperienceItem[] = [
     {
         year: "2025",
         role: "Python Developer Intern",
+        company: "Online Linked-in",
         duration: "Aug 2025 – Oct 2025",
         description:
             "Designed and developed scalable backend components and REST APIs using Python, Django, JavaScript, and PostgreSQL to translate core functional requirements into reliable code. Performed rigorous testing, debugging, and issue resolution to enhance software stability and operational performance.",
